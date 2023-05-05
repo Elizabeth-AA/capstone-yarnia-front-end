@@ -1,0 +1,10 @@
+[
+    {
+      "path": "/stash",
+      "name": "stash"
+    },
+    {
+      "path": "/yarn",
+      "name": "yarn"
+    }
+]
