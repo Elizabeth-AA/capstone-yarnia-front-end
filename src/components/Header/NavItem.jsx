@@ -3,12 +3,7 @@ import { NavLink } from 'react-router-dom'
 export default function NavItem({ to, name, active, setActiveLink }) {
     return (
         <NavLink
-            className={`
-                ${active === name ? 'bg-yarnia-dark-green' : ''} 
-                block lowercase text-sm md:text-base rounded-full py-2 px-8 
-                text-center align-middle text-yarnia-theme-yellow
-                hover:text-yarnia-theme-orange
-            `}
+            className='btn btn-xs btn-active btn-primary btn-text hover:bg-neutral rounded-2xl w-16 md:w-20 md:btn-sm lg:btn-md' 
             to={to}
             onClick={() => setActiveLink(name)}
         >

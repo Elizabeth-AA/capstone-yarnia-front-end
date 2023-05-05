@@ -1,5 +1,6 @@
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 
 @layer base {
   @font-face {
@@ -13,5 +14,19 @@
     font-weight: 400;
     font-style: normal;
     src: url('@/assets/fonts/lato/Lato-Regular.ttf') format('truetype');
+  }
+}
+
+@layer components {
+  .section {
+    @apply my-0 mx-4 md:mx-8 xl:mx-auto xl:max-w-7xl
+  }
+
+  .page-header {
+    @apply font-serif text-secondary lowercase tracking-wide text-[2.25rem] leading-9 md:text-[2.75rem] lg:text-[3.25rem] md:leading-10
+  }
+
+  .btn-text {
+    @apply font-serif text-secondary lowercase text-base md:text-xl hover:text-accent tracking-widest
   }
 }

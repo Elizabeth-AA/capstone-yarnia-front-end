@@ -2,21 +2,38 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  
   theme: {
+    screens: {
+      'md': '425px',
+      'lg': '768px',
+      'xl': '1366px',
+    },
+    
     extend: {
-      colors: {
-        'yarnia-dark-green': '#03160E',
-        'yarnia-theme-green': '#15311A',
-        'yarnia-light-green': '#B7BF96',
-        'yarnia-lightest': '#FAFAF9',
-        'yarnia-theme-orange': '#B0440A',
-        'yarnia-theme-yellow': '#C78720',
-        'yarnia-error-red': '#881508',
-      },
       fontFamily: {
-        sans: ['Lato', 'Retrophilia', ...defaultTheme.fontFamily.sans],
+        sans: ['Lato', ...defaultTheme.fontFamily.sans],
+        serif: ['Retrophilia', ...defaultTheme.fontFamily.serif]
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          'primary': '#15311A',
+          'secondary': '#B0440A',
+          'accent': '#C78720',
+          'neutral': '#03160E',
+          'base-100': '#B7BF96',
+          'error': '#881508',
+        }
+      }
+    ]
+  },
+  
+
+  plugins: [require('@tailwindcss/typography'), require ('daisyui')],
 }
+// 'yarnia-lightest': '#FAFAF9'
