@@ -1,4 +1,5 @@
 {
     "stash": "/api/stash",
-    "yarn": "/api/yarn"
+    "yarn": "/api/yarn",
+    "search": "/yarns/search.json"
 }
