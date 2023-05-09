@@ -5,7 +5,7 @@ const Autocomplete = ({ items, value, onChange }) => {
     const [open, setOpen] = useState(false);
 
     return (
-        <div className="dropdown w-full" ref={ref}>
+        <div className="dropdown w-full dropdown-open" ref={ref}>
             <input
                 type="text"
                 className="input input-bordered w-full"
