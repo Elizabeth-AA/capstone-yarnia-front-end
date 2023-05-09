@@ -9,12 +9,12 @@ import { getRavelryYarn } from "../utils/helpers"
 
 export default function Stash() {
     const [searchTerm, setSearchTerm] = useState("")
-    const [selectedYarn, setSelectedYarn] = useState({})
+    const [searchResults, setSearchResults] = useState([])
 
     useEffect(() => {
         if (searchTerm.trim().length > 0) {
             getRavelryYarn().then((data) => {
-                setSelectedYarn(data)
+                setSearchResults(data)
             })
             .catch(err => {
                 console.error(err);
@@ -23,11 +23,15 @@ export default function Stash() {
     }, [searchTerm]);
 
     const searchHandler = async (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         setSearchTerm(e.target.value)
     }
 
     return (
-        <Autocomplete />
+        <Autocomplete
+            items={searchResults}
+            value={searchTerm}
+            onChange={searchHandler}
+        />
     )
 }
