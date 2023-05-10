@@ -1,17 +1,19 @@
-import axios from 'axios'
+import axios from "axios"
+import { API_URL, RAV_URL, RAV_HEADER } from "@utils/const"
 
-const BASE_URL = import.meta.env.VITE_BASE_URL
-// const API_KEY = import.meta.env.VITE_API_KEY;
-const RAV_URL = import.meta.env.RAV_URL
-const RAV_HEADER = import.meta.env.RAV_HEADER
+// const API_URL = import.meta.env.API_URL
+// // const API_KEY = import.meta.env.VITE_API_KEY;
+// // const RAV_SEARCH_URL = import.meta.env.RAV_SEARCH_URL
+// console.log(REACT_APP_RAV_SEARCH_URL)
+// const RAV_HEADER = import.meta.env.RAV_HEADER
 
-const instance = axios.create({
-  baseURL: BASE_URL,
+export const apiInstance = axios.create({
+  baseURL: API_URL,
 })
 
-const instanceRav = axios.create({
+export const ravInstance = axios.create({
     baseURL: RAV_URL,
-    header: RAV_HEADER,
+    headers: {
+        Authorization: RAV_HEADER,
+    },
 })
-
-export default { instance, instanceRav }

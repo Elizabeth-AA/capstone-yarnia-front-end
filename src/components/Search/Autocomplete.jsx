@@ -1,8 +1,15 @@
 import { memo, useRef, useState } from "react"
 
-const Autocomplete = ({ items, value, onChange }) => {
+const Autocomplete = ({ items, search, onChange, value }) => {
+    
     const ref = useRef(null);
     const [open, setOpen] = useState(false);
+
+    const handleInputChange = (event) => {
+        const value = event.target.value
+        onChange(value)
+        search(value)
+    }
 
     return (
         <div className="dropdown w-full dropdown-open" ref={ref}>
@@ -10,7 +17,7 @@ const Autocomplete = ({ items, value, onChange }) => {
                 type="text"
                 className="input input-bordered w-full"
                 value={value}
-                onChange={(e) => onChange(e.target.value)}
+                onChange={handleInputChange}
                 placeholder="Search for yarn by name"
                 tabIndex={0}
             />
@@ -19,7 +26,15 @@ const Autocomplete = ({ items, value, onChange }) => {
                     className="menu menu-compact"
                     style={{ width: ref.current?.clientWidth }}
                 >
-                    {items.map((item, index) => {
+                    {items
+                    // .filter(item => {
+                    //     if (searchTerm === '') {
+                    //         return item;
+                    //     } else if (item.yarns.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    //         return item;
+                    //     }
+                    // })
+                    .map((item, index) => {
                         return (
                             <li
                                 key={index}
@@ -30,7 +45,7 @@ const Autocomplete = ({ items, value, onChange }) => {
                                 }}
                                 className="border-b border-b-base-content/10 w-full"
                             >
-                                <button>{item}</button>
+                                {item.loading ? <span>Loading...</span> : <button>{item.searchTerm}</button>}
                             </li>
                         )
                     })}
