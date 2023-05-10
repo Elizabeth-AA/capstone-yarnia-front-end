@@ -11,17 +11,20 @@ export default function Stash() {
     const [searchTerm, setSearchTerm] = useState("")
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(false)
+    const [selectedItem, setSelectedItem] = useState()
 
-    // const searchHandler = async (term) => {
-    //     setSearchTerm(term)
-    // }
     const search = async (searchTerm) => {
         try {
             const data = await getRavelryYarn(searchTerm)
             const searchResults = data.yarns.map((item) => ({
-                loading: false,
+                rav_id: item.id,
+                name: item.name,
+                yarn_company: item.yarn_company_name,
+                yarn_weight: item.yarn_weight,
+                yardage: item.yardage,
+                photo: item.first_photo,
+                permalink: item.permalink,
                 searchTerm: item.name,
-                yarns: item.name
             }));
             setItems(searchResults)
         } catch (error) {
@@ -36,33 +39,11 @@ export default function Stash() {
             setItems([])
         }
     }, [searchTerm])
-
-    // useEffect(() => {
-    //     if (searchTerm.trim().length > 0) {
-    //         setLoading(true);
-    //         getRavelryYarn(searchTerm).then((data) => {
-    //             ([{ searchTerm: searchTerm, loading: false, results: data }]);
-    //             setLoading(false)
-    //         })
-    //     }
-    // })
-
-    // useEffect(() => {
-    //     console.log(searchTerm)
-    //     if (searchTerm && searchTerm.trim().length > 0) {
-    //         getRavelryYarn(searchTerm).then((data) => {
-    //             setSearchResults(data)
-    //         })
-    //         .catch(err => {
-    //             console.error(err);
-    //         });
-    //     }
-    // }, [searchTerm]);
-
-    // const searchHandler = async (e) => {
-    //     // e.preventDefault()
-    //     setSearchTerm(e.target.value)
-    // }
+    
+    const handleSelectItem = (item) => {
+        setSelectedItem(item);
+        console.log(item)
+    }
 
     return (
         <Autocomplete
@@ -70,6 +51,7 @@ export default function Stash() {
             search={search}
             value={searchTerm}
             onChange={(item) => setSearchTerm(item)}
+            onSelect={handleSelectItem}
         />
     )
 }

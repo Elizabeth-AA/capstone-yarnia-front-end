@@ -1,6 +1,6 @@
 import { memo, useRef, useState } from "react"
 
-const Autocomplete = ({ items, search, onChange, value }) => {
+const Autocomplete = ({ items, search, onChange, value, onSelect }) => {
     
     const ref = useRef(null);
     const [open, setOpen] = useState(false);
@@ -12,7 +12,7 @@ const Autocomplete = ({ items, search, onChange, value }) => {
     }
 
     return (
-        <div className="dropdown w-full dropdown-open" ref={ref}>
+        <div className={`dropdown w-full ${open ? 'dropdown-open' : ''}`} ref={ref}>
             <input
                 type="text"
                 className="input input-bordered w-full"
@@ -22,34 +22,26 @@ const Autocomplete = ({ items, search, onChange, value }) => {
                 tabIndex={0}
             />
             <div className="dropdown-content bg-base-100 top-14 max-h-96 overflow-auto flex-col rounded-md">
-                <ul 
+                <div 
                     className="menu menu-compact"
                     style={{ width: ref.current?.clientWidth }}
                 >
-                    {items
-                    // .filter(item => {
-                    //     if (searchTerm === '') {
-                    //         return item;
-                    //     } else if (item.yarns.toLowerCase().includes(searchTerm.toLowerCase())) {
-                    //         return item;
-                    //     }
-                    // })
-                    .map((item, index) => {
+                    {items.map((item, index) => {
                         return (
-                            <li
+                            <div
                                 key={index}
                                 tabIndex={index+1}
                                 onClick={() => {
-                                    onChange(item);
+                                    onSelect(item);
                                     setOpen(false);
                                 }}
-                                className="border-b border-b-base-content/10 w-full"
+                                className="menu-item border-b border-b-base-content/10 w-full"
                             >
-                                {item.loading ? <span>Loading...</span> : <button>{item.searchTerm}</button>}
-                            </li>
+                                <button>{item.searchTerm}</button>
+                            </div>
                         )
                     })}
-                </ul>
+                </div>
             </div>
         </div>
     )
