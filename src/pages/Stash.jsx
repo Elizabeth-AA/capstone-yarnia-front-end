@@ -4,14 +4,17 @@
 // image hover reveals modal with brief info
 // image click directs to yarn patterns page
 import { useEffect, useState } from "react"
-import Autocomplete from "@components/Search/Autocomplete"
 import { getRavelryYarn } from "@utils/helpers"
+import Autocomplete from "@components/Search/Autocomplete"
+import SelectedItem from "@components/Search/SelectedItem"
+import StashItem from "@components/Card/StashItem"
 
 export default function Stash() {
     const [searchTerm, setSearchTerm] = useState("")
     const [items, setItems] = useState([])
-    const [loading, setLoading] = useState(false)
-    const [selectedItem, setSelectedItem] = useState()
+    // const [loading, setLoading] = useState(false)
+    const [selectedItem, setSelectedItem] = useState(null)
+    const [stash, setStash] = useState([])
 
     const search = async (searchTerm) => {
         try {
@@ -42,16 +45,30 @@ export default function Stash() {
     
     const handleSelectItem = (item) => {
         setSelectedItem(item);
+        document.activeElement.blur();
         console.log(item)
     }
 
+    const addToStash = (item) => {
+        setStash([...stash, item])
+    }
+
     return (
-        <Autocomplete
-            items={items}
-            search={search}
-            value={searchTerm}
-            onChange={(item) => setSearchTerm(item)}
-            onSelect={handleSelectItem}
-        />
+        <>
+            <Autocomplete
+                items={items}
+                search={search}
+                value={searchTerm}
+                onChange={(item) => setSearchTerm(item)}
+                onSelect={handleSelectItem}
+            />
+            <SelectedItem
+                selectedItem={selectedItem}
+                addToStash={addToStash}
+            />
+            <StashItem
+                stash={stash}
+            />
+        </>
     )
 }

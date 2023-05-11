@@ -26,8 +26,8 @@ module.exports = {
           'primary': '#15311A',
           'secondary': '#B0440A',
           'accent': '#C78720',
-          'neutral': '#03160E',
-          'base-100': '#B7BF96',
+          'neutral': '#BBCBBE',
+          'base-100': '#4E7655',
           'error': '#881508',
         }
       }
@@ -38,3 +38,4 @@ module.exports = {
   plugins: [require('@tailwindcss/typography'), require ('daisyui')],
 }
 // 'yarnia-lightest': '#FAFAF9'
+// #B7BF96 base-100
