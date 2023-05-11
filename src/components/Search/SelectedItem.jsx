@@ -13,7 +13,7 @@ const SelectedItem = ({ selectedItem, addToStash }) => {
                 <div className="modal-box card md:card-side md:w-fit bg-primary shadow-xl">
                     <img src={selectedItem.photo.small_url} alt="selected yarn image" />
                     <div className="md:flex-col">
-                        <h3 className="card-header">{selectedItem.name}</h3>
+                        <h3 className="card-header md:pl-4">{selectedItem.name}</h3>
                         <p className="md:pl-4 md:pb-2"> by {selectedItem.yarn_company}</p>
                         <p className="pb-4 md:pl-4">{selectedItem.yarn_weight.name} - {selectedItem.yardage} yds</p>
                         <div className="flex flex-wrap justify-evenly md:flex-col md:ml-4 md:mt-4">
