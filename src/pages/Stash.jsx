@@ -5,6 +5,7 @@
 // image click directs to yarn patterns page
 import { useEffect, useState } from "react"
 import Autocomplete from "@components/Search/Autocomplete"
+import SelectedItem from "@components/Search/SelectedItem"
 import { getRavelryYarn } from "@utils/helpers"
 
 export default function Stash() {
@@ -55,29 +56,9 @@ export default function Stash() {
                 onChange={(item) => setSearchTerm(item)}
                 onSelect={handleSelectItem}
             />
-        
-            {selectedItem && (
-                <div className="modal-open={opened}">
-                    <div className="modal-box">
-                        <img src={selectedItem.photo.medium_url} />
-                        <h3>{selectedItem.name}</h3>
-                        <p>
-                            {selectedItem.yarn_company} - {selectedItem.yarn_weight.name} - 
-                            {selectedItem.yardage} yds
-                        </p>
-                        <p>{selectedItem.description}</p>
-                        <button>close</button>
-                        <button>add to stash</button>
-                        <a
-                            href={`https://www.ravelry.com/yarns/library/${selectedItem.permalink}`}
-                            target="_blank"
-                            className="btn btn-primary"
-                        >
-                            View on Ravelry
-                        </a>
-                    </div>
-                </div>
-            )}
+            <SelectedItem
+                selectedItem={selectedItem}
+            />
         </>
     )
 }

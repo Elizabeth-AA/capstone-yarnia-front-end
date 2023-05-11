@@ -26,6 +26,10 @@
     @apply font-serif text-secondary lowercase tracking-wide text-[2.25rem] leading-9 md:text-[2.75rem] lg:text-[3.25rem] md:leading-10
   }
 
+  .card-header {
+    @apply font-serif text-secondary text-xl md:text-3xl pt-2 md:pt-0 md:pl-4
+  }
+
   .btn-text {
     @apply font-serif text-secondary lowercase text-base md:text-xl hover:text-accent tracking-widest
   }
