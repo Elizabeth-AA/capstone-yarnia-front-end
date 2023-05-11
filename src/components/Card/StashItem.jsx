@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const StashItem = ({ stash }) => {
     return (
         <div className="flex justify-center flex-col md:flex-row md:flex-wrap">
@@ -11,7 +13,9 @@ const StashItem = ({ stash }) => {
                         <p>{item.yardage} yds</p>
                     </div>
                     <div className="card-actions justify-end absolute bottom-0 right-0">
-                        <button className="btn w-24 btn-square btn-secondary">suggest projects</button>
+                        <Link key={item.rav_id} to={`/projects/${item.rav_id}`}>
+                            <button className="btn w-24 btn-square btn-secondary">suggest projects</button>
+                        </Link>
                     </div>
                 </div>
             ))}

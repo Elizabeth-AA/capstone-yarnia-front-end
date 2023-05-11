@@ -1,4 +1,4 @@
 {
     "stash": "/api/stash",
-    "yarn": "/api/yarn"
+    "projects": "/api/yarn"
 }
