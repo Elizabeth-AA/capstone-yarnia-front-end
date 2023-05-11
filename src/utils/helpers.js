@@ -11,7 +11,7 @@ export async function getRavelryYarn(searchTerm) {
     } catch (e) {
       console.log(e);
     }
-  }
+}
 
 export async function addNewStash(data) {
   try {

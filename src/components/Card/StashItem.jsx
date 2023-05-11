@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const StashItem = ({ stash }) => {
     return (
         <div className="flex justify-center md:flex-row md:flex-wrap">
