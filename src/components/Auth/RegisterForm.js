@@ -1,11 +1,11 @@
 import { useState } from "react"
-import LogInFields from '@components/Auth/FormFields'
-import AuthInput from '@components/Auth/AuthInput'
-import AuthBtn from "@components/Auth/AuthBtn"
+import SignUpFields from '@components/Auth/FormFields'
+import AuthInput from "@components/Auth/AuthInput"
+import AuthBtn from '@components/Auth/AuthBtn'
 
-export default function AuthForm() {
-    const fields = useState(LogInFields)
-    const [loginFields, setLoginFields] = useState(
+export default function RegisterForm() {
+    const fields = useState(SignUpFields)
+    const [signupFields, setSignupFields] = useState(
         fields.reduce((acc, field) => {
             acc[field.id] = "";
             return acc;
@@ -13,16 +13,17 @@ export default function AuthForm() {
     );
 
     const handleChange = (e) => {
-        setLoginFields({...loginFields, [e.target.id]: e.target.value});
+        setSignupFields({...signupFields, [e.target.id]: e.target.value});
     };
   
     const handleSubmit = (e) => {
         e.preventDefault();
-        authenticateUser()
+        console.log(signupFields)
+        createUser()
     }
 
-    const authenticateUser = () => {
-        // login api integration
+    const createUser = () => {
+        // signup api integration
     }
 
     return (
