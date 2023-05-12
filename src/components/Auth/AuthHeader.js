@@ -3,7 +3,7 @@ import Logo from "@components/Header/Logo"
 
 export default function AuthHeader({ heading, text, linkText, linkUrl='#' }) {
     return (
-        <div className="card mb-10 bg-primary">
+        <div className="mb-10 bg-primary">
             <div className="flex justify-center">
                 <Logo />
             </div>
