@@ -1,7 +1,7 @@
 [
     {
-      "path": "/stash",
-      "name": "stash"
+      "path": "/users",
+      "name": "users"
     },
     {
       "path": "/yarn",

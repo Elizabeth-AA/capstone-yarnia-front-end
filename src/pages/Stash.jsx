@@ -1,10 +1,6 @@
-// search dropdown
-// add to stash
-// yarn images
-// image hover reveals modal with brief info
-// image click directs to yarn patterns page
 import { useEffect, useState } from "react"
-import { getRavelryYarn } from "@utils/helpers"
+import { useParams } from "react-router"
+import { getRavelryYarn, addNewStash } from "@utils/helpers"
 import Autocomplete from "@components/Search/Autocomplete"
 import SelectedItem from "@components/Search/SelectedItem"
 import StashItem from "@components/Card/StashItem"
@@ -49,8 +45,27 @@ export default function Stash() {
         console.log(item)
     }
 
-    const addToStash = (item) => {
-        setStash([...stash, item])
+    const addToStash = async (item) => {
+        try {
+            const data = {
+                user_id: `${id}`,
+                rav_id: item.id,
+                name: item.name,
+                yarn_company: item.yarn_company_name,
+                yarn_weight: item.yarn_weight,
+                yardage: item.yardage,
+                photo: item.first_photo,
+                permalink: item.permalink,
+            }
+            const response = await addNewStash(data)
+            if (response && response.status === 201) {
+                setStash([...stash, item])
+            } else {
+                console.error("yarn not added to stash")
+            }
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     return (
