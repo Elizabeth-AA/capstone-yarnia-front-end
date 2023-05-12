@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { getRavelryYarn, addNewStash } from "@utils/helpers"
+import Header from '@components/Header/Header'
 import Autocomplete from "@components/Search/Autocomplete"
 import SelectedItem from "@components/Search/SelectedItem"
 import StashItem from "@components/Card/StashItem"
@@ -70,6 +71,7 @@ export default function Stash() {
 
     return (
         <>
+            <Header />
             <Autocomplete
                 items={items}
                 search={search}
