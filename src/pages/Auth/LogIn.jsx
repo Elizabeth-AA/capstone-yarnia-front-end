@@ -1,7 +1,8 @@
 // statement of purpose
 // login/sign up tabs
 // direct to user stash page
-import AuthHeader from "@components/Auth/AuthHeader";
+import AuthHeader from "@components/Auth/AuthHeader"
+import AuthForm from "@components/Auth/AuthForm"
 
 export default function LogIn() {
     return (
@@ -12,6 +13,7 @@ export default function LogIn() {
                 linkText="Signup"
                 linkUrl="/signup"
             />
+            <AuthForm />
         </>
     )
 }

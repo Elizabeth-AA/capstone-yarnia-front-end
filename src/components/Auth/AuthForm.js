@@ -1,6 +1,7 @@
 import { useState } from "react"
 import FormFields from '@components/Auth/FormFields'
 import AuthInput from '@components/Auth/AuthInput'
+import AuthBtn from "@components/Auth/AuthBtn"
 
 export default function AuthForm() {
     const fields = useState(FormFields)
@@ -15,8 +16,17 @@ export default function AuthForm() {
       setFieldsState({...fieldsState, [e.target.id]: e.target.value});
     };
   
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        authenticateUser()
+    }
+
+    const authenticateUser = () => {
+        // login api integration
+    }
+
     return (
-      <form className="mt-8 space-y-6">
+      <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
         <div className="-space-y-px">
           {fields.map(field =>
             <AuthInput
@@ -33,6 +43,7 @@ export default function AuthForm() {
             />
           )}
         </div>
+        <AuthBtn handleSubmit={handleSubmit} text="Login" />
       </form>
     )
 }
