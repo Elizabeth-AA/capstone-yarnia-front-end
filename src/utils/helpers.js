@@ -1,4 +1,4 @@
-import { ravInstance } from '@services/axios'
+import { ravInstance, apiInstance } from '@services/axios'
 import routes from '@services/routes.json'
 import axios from 'axios'
 
@@ -15,7 +15,7 @@ export async function getRavelryYarn(searchTerm) {
 
 export async function addNewStash(data) {
   try {
-    const response = await axios.post(routes.stash, JSON.stringify(data))
+    const response = await apiInstance.post(routes.users, JSON.stringify(data))
     if (response.status === 201) {
       return response
     }

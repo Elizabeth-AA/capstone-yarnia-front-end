@@ -2,15 +2,17 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { getRavelryYarn, addNewStash } from "@utils/helpers"
 import Autocomplete from "@components/Search/Autocomplete"
-import SelectedItem from "@components/Search/SelectedItem"
+import SelectedItem from "@components/Modal/SelectedItem"
 import StashItem from "@components/Card/StashItem"
 
-export default function Stash() {
+export default function User() {
     const [searchTerm, setSearchTerm] = useState("")
     const [items, setItems] = useState([])
     // const [loading, setLoading] = useState(false)
     const [selectedItem, setSelectedItem] = useState(null)
     const [stash, setStash] = useState([])
+
+    const { id } = useParams()
 
     const search = async (searchTerm) => {
         try {
@@ -48,8 +50,8 @@ export default function Stash() {
     const addToStash = async (item) => {
         try {
             const data = {
-                user_id: `${id}`,
-                rav_id: item.id,
+                // user_id: `${id}`,
+                rav_id: item.rav_id,
                 name: item.name,
                 yarn_company: item.yarn_company_name,
                 yarn_weight: item.yarn_weight,

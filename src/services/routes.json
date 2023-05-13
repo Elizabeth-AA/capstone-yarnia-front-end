@@ -1,4 +1,4 @@
 {
-    "stash": "/api/stash",
-    "projects": "/api/projects"
+    "users": "/api/users",
+    "projects": "/api/yarn"
 }

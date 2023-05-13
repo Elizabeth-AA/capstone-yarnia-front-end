@@ -1,14 +1,14 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Header from '@components/Header/Header'
-import Stash from '@pages/Stash'
+import User from '@pages/User'
 
 function App() {
   return (
     <>
       <Header />
       <Routes>
-        <Route path='/stash' element={<Stash />} />
+        <Route path='/' element={<User />} />
       </Routes>
     </>
   )
