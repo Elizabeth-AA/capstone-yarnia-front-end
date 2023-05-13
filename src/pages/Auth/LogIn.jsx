@@ -7,7 +7,7 @@ export default function LogIn() {
             <AuthHeader
                 heading="Login to your stash"
                 text="Don't have an account? "
-                linkText="Signup now"
+                linkText="Sign up now"
                 linkUrl="/signup"
             />
             <AuthForm />

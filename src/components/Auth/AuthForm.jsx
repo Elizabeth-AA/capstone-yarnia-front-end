@@ -1,14 +1,16 @@
 import { useState } from "react"
-import LogInFields from '@components/Auth/FormFields'
+import { LogInFields } from '@components/Auth/FormFields'
 import AuthInput from '@components/Auth/AuthInput'
 import AuthBtn from "@components/Auth/AuthBtn"
 
 export default function AuthForm() {
-    const [fields, setFields] = useState(LogInFields)
-    const loginFields = Object.keys(fields)
+    const [loginFields, setLoginFields] = useState(LogInFields)
 
     const handleChange = (e) => {
-        setFields({...loginFields, [e.target.id]: e.target.value});
+      const updatedFields = loginFields.map((field) =>
+        field.id === e.target.id ? { ...field, value: e.target.value } : field
+      );  
+      setLoginFields(updatedFields);
     };
   
     const handleSubmit = (e) => {
@@ -27,7 +29,7 @@ export default function AuthForm() {
             <AuthInput
               key={index}
               handleChange={handleChange}
-              value={loginFields[field.id]}
+              value={field.value}
               labelText={field.labelText}
               labelFor={field.labelFor}
               id={field.id}

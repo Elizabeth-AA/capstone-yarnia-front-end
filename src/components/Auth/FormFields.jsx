@@ -1,4 +1,4 @@
-const LogInFields = [
+export const LogInFields = [
     {
         labelText:"Email address",
         labelFor:"email-address",
@@ -21,7 +21,7 @@ const LogInFields = [
     }
 ]
 
-const SignUpFields = [
+export const SignUpFields = [
     {
         labelText:"Username",
         labelFor:"username",

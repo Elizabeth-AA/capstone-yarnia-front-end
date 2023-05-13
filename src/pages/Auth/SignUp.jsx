@@ -5,10 +5,10 @@ export default function SignUp() {
     return (
         <>
             <AuthHeader
-                heading="Signup to find inspiration"
-                text="Already have an account? "
+                heading="Sign up to find inspiration"
+                text="Already have an account?"
                 linkText="Login"
-                linkUrl="/login"
+                linkUrl="/"
             />
             <RegisterForm />
         </>

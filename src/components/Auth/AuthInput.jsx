@@ -10,7 +10,7 @@ export default function AuthInput({
     placeholder
 }) {
     return (
-        <div className="my-5">
+        <div>
             <label htmlFor={labelFor} className="sr-only">
               {labelText}
             </label>
@@ -21,9 +21,9 @@ export default function AuthInput({
               name={name}
               type={type}
               required={isRequired}
-              className="input input-bordered input-secondary input-md"
+              className="input input-secondary input-sm w-full border-2 my-2 placeholder-primary"
               placeholder={placeholder}
             />
-          </div>
+        </div>
     )
 }

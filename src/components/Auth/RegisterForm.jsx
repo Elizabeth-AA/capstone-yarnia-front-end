@@ -1,14 +1,16 @@
 import { useState } from "react"
-import SignUpFields from '@components/Auth/FormFields'
+import { SignUpFields } from '@components/Auth/FormFields'
 import AuthInput from "@components/Auth/AuthInput"
 import AuthBtn from '@components/Auth/AuthBtn'
 
 export default function RegisterForm() {
-    const [fields, setFields] = useState(SignUpFields)
-    const signupFields = Object.keys(fields)
+    const [signupFields, setSignupFields] = useState(SignUpFields)
 
     const handleChange = (e) => {
-        setFields({...signupFields, [e.target.id]: e.target.value});
+      const updatedFields = signupFields.map((field) =>
+        field.id === e.target.id ? { ...field, value: e.target.value } : field
+      );  
+      setSignupFields(updatedFields);
     };
   
     const handleSubmit = (e) => {
