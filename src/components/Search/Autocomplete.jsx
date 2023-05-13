@@ -16,13 +16,13 @@ const Autocomplete = ({ items, search, onChange, value, onSelect }) => {
             <div className={`dropdown w-9/12 ${open ? 'dropdown-open' : ''}`} ref={ref}>
                 <input
                     type="text"
-                    className="bg-neutral input input-bordered w-full text-[#111511]"
+                    className="bg-base-200 input input-bordered w-full text-neutral"
                     value={value}
                     onChange={handleInputChange}
                     placeholder="Search for yarn by name"
                     tabIndex={0}
                 />
-                <div className="dropdown-content bg-neutral top-14 max-h-96 overflow-auto flex-col rounded-md">
+                <div className="dropdown-content bg-base-200 top-14 max-h-96 overflow-auto flex-col rounded-md">
                     <div 
                         className="menu menu-compact"
                         style={{ width: ref.current?.clientWidth }}
@@ -36,7 +36,7 @@ const Autocomplete = ({ items, search, onChange, value, onSelect }) => {
                                         onSelect(item);
                                         setOpen(false);
                                     }}
-                                    className="menu-item border-b border-b-base-content/10 w-full text-[#111511]"
+                                    className="menu-item border-b border-b-base-content/10 w-full text-neutral"
                                 >
                                     <button>{item.searchTerm}</button>
                                 </div>

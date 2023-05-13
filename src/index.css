@@ -31,6 +31,6 @@
   }
 
   .btn-text {
-    @apply font-serif text-secondary lowercase text-base md:text-xl hover:text-accent tracking-widest
+    @apply font-sans text-secondary lowercase font-normal text-base md:text-xl tracking-wide
   }
 }
