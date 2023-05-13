@@ -8,7 +8,9 @@ export default function Projects() {
 
     return (
         <main>
-
+            <div className="hero">
+                
+            </div>
         </main>
     )
 }

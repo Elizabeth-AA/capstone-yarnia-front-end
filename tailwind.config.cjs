@@ -24,10 +24,12 @@ module.exports = {
       {
         mytheme: {
           'primary': '#15311A',
-          'secondary': '#B0440A',
-          'accent': '#C78720',
-          'neutral': '#BBCBBE',
-          'base-100': '#4E7655',
+          // 'secondary': '#B0440A',
+          'secondary': '#E0570D',
+          'accent': '#d89223',
+          'neutral': '#E9EFEA',
+          'base-100': '#6B9472',
+          'base-200': '#2c6736',
           'error': '#881508',
         }
       }
@@ -38,4 +40,4 @@ module.exports = {
   plugins: [require('@tailwindcss/typography'), require ('daisyui')],
 }
 // 'yarnia-lightest': '#FAFAF9'
-// #B7BF96 base-100
+// #B7BF96 base-100 #4E7655
