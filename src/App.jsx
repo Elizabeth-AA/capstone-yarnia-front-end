@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { LogIn, SignUp } from '@pages/Auth'
+import LogIn from '@pages/Auth/SignUp'
+import SignUp from '@pages/Auth/SignUp'
 import Stash from '@pages/Stash'
 import Projects from '@pages/Projects'
 

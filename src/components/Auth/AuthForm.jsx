@@ -1,37 +1,31 @@
 import { useState } from "react"
-import SignUpFields from '@components/Auth/FormFields'
-import AuthInput from "@components/Auth/AuthInput"
-import AuthBtn from '@components/Auth/AuthBtn'
+import LogInFields from '@components/Auth/FormFields'
+import AuthInput from '@components/Auth/AuthInput'
+import AuthBtn from "@components/Auth/AuthBtn"
 
-export default function RegisterForm() {
-    const fields = useState(SignUpFields)
-    const [signupFields, setSignupFields] = useState(
-        fields.reduce((acc, field) => {
-            acc[field.id] = "";
-            return acc;
-          }, {})
-    );
+export default function AuthForm() {
+    const [fields, setFields] = useState(LogInFields)
+    const loginFields = Object.keys(fields)
 
     const handleChange = (e) => {
-        setSignupFields({...signupFields, [e.target.id]: e.target.value});
+        setFields({...loginFields, [e.target.id]: e.target.value});
     };
   
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(signupFields)
-        createUser()
+        authenticateUser()
     }
 
-    const createUser = () => {
-        // signup api integration
+    const authenticateUser = () => {
+        // login api integration
     }
 
     return (
       <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
         <div className="-space-y-px">
-          {fields.map(field =>
+          {loginFields.map((field, index) =>
             <AuthInput
-              key={field.id}
+              key={index}
               handleChange={handleChange}
               value={loginFields[field.id]}
               labelText={field.labelText}
