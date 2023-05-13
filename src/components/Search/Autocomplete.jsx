@@ -16,7 +16,7 @@ const Autocomplete = ({ items, search, onChange, value, onSelect }) => {
             <div className={`dropdown w-9/12 ${open ? 'dropdown-open' : ''}`} ref={ref}>
                 <input
                     type="text"
-                    className="bg-base-200 input input-bordered w-full text-neutral"
+                    className="bg-base-200 input input-bordered w-full text-base-content"
                     value={value}
                     onChange={handleInputChange}
                     placeholder="Search for yarn by name"
@@ -36,7 +36,7 @@ const Autocomplete = ({ items, search, onChange, value, onSelect }) => {
                                         onSelect(item);
                                         setOpen(false);
                                     }}
-                                    className="menu-item border-b border-b-base-content/10 w-full text-neutral"
+                                    className="menu-item border-b border-b-base-content/10 w-full text-base-content"
                                 >
                                     <button>{item.searchTerm}</button>
                                 </div>

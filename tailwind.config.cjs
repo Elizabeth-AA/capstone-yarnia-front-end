@@ -26,9 +26,10 @@ module.exports = {
           'primary': '#15311A',
           'secondary': '#E0570D',
           'accent': '#d89223',
-          'neutral': '#E9EFEA',
+          'neutral': '#131F1A',
           'base-100': '#6B9472',
           'base-200': '#2c6736',
+          'base-content': '#FAFAF9',
           'error': '#881508',
         }
       }

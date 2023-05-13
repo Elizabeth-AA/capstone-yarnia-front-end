@@ -2,7 +2,6 @@ import { useState } from "react";
 
 const SelectedItem = ({ selectedItem, addToStash }) => {
     const [open, setOpen] = useState(true)
-    const [newStash, setNewStash] = useState({})
 
     const handleClick = () => setOpen((prev) => !prev)
     
