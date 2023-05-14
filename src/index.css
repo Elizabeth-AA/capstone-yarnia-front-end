@@ -23,7 +23,7 @@
   }
 
   .page-header {
-    @apply font-serif text-secondary lowercase tracking-wide text-[2.25rem] leading-9 md:text-[2.75rem] lg:text-[3.25rem] md:leading-10
+    @apply font-serif text-secondary lowercase tracking-wide text-[2.5rem] leading-9 md:text-[2.75rem] lg:text-[3rem] md:leading-10
   }
 
   .card-header {
@@ -31,6 +31,6 @@
   }
 
   .btn-text {
-    @apply font-sans text-secondary lowercase font-normal text-base md:text-xl tracking-wide
+    @apply font-sans text-secondary lowercase font-normal text-sm md:text-base lg:font-semibold tracking-wide lg:tracking-widest
   }
 }
