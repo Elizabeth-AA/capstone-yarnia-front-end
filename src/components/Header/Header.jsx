@@ -10,14 +10,14 @@ export default function Header() {
     
     return (
         <header>
-            <nav className='relative flex items-center justify-between flex-wrap flex-row bg-primary px-4 py-1 z-10 pin-t'>
-                <div className='flex justify-start'>
+            <nav className='relative flex items-center justify-between flex-wrap flex-col md:flex-row bg-primary px-4 py-1 z-10 pin-t'>
+                <div className=''>
                     <a className="inline-flex no-underline hover:text-accent hover:no-underline" href="/">
                         <img className="h-14" src={logo} />
-                        <span className='absolute left-20 bottom-1 mt-4 page-header'>yarnia</span>                   
+                        <span className='md:absolute md:left-20 md:bottom-3 mt-4 ml-1 md:ml-0 page-header'>yarnia</span>                   
                     </a>
                 </div>
-                <div className='flex justify-center btn-text gap-1 flex-col md:flex-row md:gap-3'>
+                <div className='flex justify-center btn-text gap-4 md:gap-3 lg:gap-4 flex-row mt-2 md:mt-0 mb-1 md:mb-0'>
                     {NavLinks.map((link, index) => (
                         <NavItem
                             key={index}
