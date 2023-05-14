@@ -3,7 +3,7 @@ import { useParams } from "react-router"
 import { getRavelryYarn, addNewStash } from "@utils/helpers"
 import Autocomplete from "@components/Search/Autocomplete"
 import SelectedItem from "@components/Modal/SelectedItem"
-import StashItem from "@components/Card/StashItem"
+import StashCollapse from "@components/Collapse/StashCollapse"
 
 export default function User() {
     const [searchTerm, setSearchTerm] = useState("")
@@ -38,6 +38,7 @@ export default function User() {
             search(searchTerm);
         } else {
             setItems([])
+            setSelectedItem(null)
         }
     }, [searchTerm])
     
@@ -83,7 +84,7 @@ export default function User() {
                 selectedItem={selectedItem}
                 addToStash={addToStash}
             />
-            <StashItem
+            <StashCollapse
                 stash={stash}
             />
         </>
