@@ -1,4 +1,11 @@
+import { useNavigate } from "react-router-dom"
+
 const StashCollapse = ({ stash }) => {
+    const navigate = useNavigate()
+    const toProjects = (rav_id) => {
+        navigate(`/yarn/${item.rav_id}`)
+    }
+
     return (
         <div className="section flex justify-center flex-col flex-wrap md:flex-row">
         {stash.map((item) => (
@@ -16,7 +23,7 @@ const StashCollapse = ({ stash }) => {
                 <div className="flex flex-wrap pt-2">
                     <p tabIndex={0} className="text-neutral-content text-left w-2/4">{item.yarn_weight.name}</p>
                     <p tabIndex={0} className="text-neutral-content text-right w-2/4">{item.yardage} yds</p>
-                    <button tabIndex={0} className="mt-3 btn btn-xs btn-block btn-outline btn-secondary">suggest projects</button>
+                    <button tabIndex={0} onClick={toProjects(item.rav_id)} className="mt-3 btn btn-xs btn-block btn-outline btn-secondary">suggest projects</button>
                 </div>
             </div>
         </div>
