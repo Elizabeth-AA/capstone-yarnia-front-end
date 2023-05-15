@@ -1,6 +1,5 @@
 import { ravInstance, apiInstance } from '@services/axios'
 import routes from '@services/routes.json'
-import axios from 'axios'
 
 export async function getRavelryYarn(searchTerm) {
     try {
@@ -9,9 +8,9 @@ export async function getRavelryYarn(searchTerm) {
         return response.data;
       }
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
-  }
+}
 
 export async function addNewStash(data) {
   try {
@@ -19,7 +18,18 @@ export async function addNewStash(data) {
     if (response.status === 201) {
       return response
     }
-  } catch (error) {
-    console.log(error)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+export async function getRavelryProjects(yarnPermalink) {
+  try {
+    const response = await ravInstance.get(`projects/search.json?yarn-link=${yarnPermalink}`);
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (e) {
+    console.log(e)
   }
 }
