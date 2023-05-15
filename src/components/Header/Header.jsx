@@ -11,7 +11,7 @@ export default function Header() {
     return (
         <header>
             <nav className='relative flex items-center justify-between flex-wrap flex-col md:flex-row bg-primary px-4 py-1 z-10 pin-t'>
-                <div className=''>
+                <div>
                     <a className="inline-flex no-underline hover:text-accent hover:no-underline" href="/">
                         <img className="h-14" src={logo} />
                         <span 

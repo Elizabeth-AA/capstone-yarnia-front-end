@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router"
 import { getRavelryYarn, addNewStash } from "@utils/helpers"
 import Autocomplete from "@components/Search/Autocomplete"
 import SelectedItem from "@components/Modal/SelectedItem"
@@ -12,8 +11,6 @@ export default function User() {
     const [selectedItem, setSelectedItem] = useState(null)
     const [stash, setStash] = useState([])
     const [open, setOpen] = useState(false)
-
-    const { id } = useParams()
 
     const search = async (searchTerm) => {
         try {
@@ -47,7 +44,6 @@ export default function User() {
         setSelectedItem(item)
         setOpen(true)
         document.activeElement.blur()
-        console.log(item)
     }
      
     const handleClose = () => {
@@ -57,7 +53,6 @@ export default function User() {
 
     const handleClick = () => {
         setOpen((prev) => !prev)
-        console.log(open)
     }
 
     const addToStash = async (item) => {
@@ -66,15 +61,16 @@ export default function User() {
                 // user_id: `${id}`,
                 rav_id: item.rav_id,
                 name: item.name,
-                yarn_company: item.yarn_company_name,
-                yarn_weight: item.yarn_weight,
-                yardage: item.yardage,
+                yarn_company: item.yarn_company_name || "Unknown",
+                yarn_weight: item.yarn_weight || "Unknown",
+                yardage: item.yardage || "Unknown",
                 photo: item.first_photo,
                 permalink: item.permalink,
             }
             const response = await addNewStash(data)
             if (response && response.status === 201) {
-                setStash([...stash, item])
+                setStash([...stash, data])
+                console.log(stash)
             } else {
                 console.error("yarn not added to stash")
             }
