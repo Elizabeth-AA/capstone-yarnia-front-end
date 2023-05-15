@@ -26,7 +26,7 @@ export default function User() {
                 photo: item.first_photo,
                 permalink: item.permalink,
                 searchTerm: item.name,
-            }));
+            }))
             setItems(searchResults)
         } catch (error) {
             console.error(error)
@@ -35,7 +35,7 @@ export default function User() {
 
     useEffect(() => {
         if (searchTerm) {
-            search(searchTerm);
+            search(searchTerm)
         } else {
             setItems([])
             setSelectedItem(null)
@@ -43,9 +43,13 @@ export default function User() {
     }, [searchTerm])
     
     const handleSelectItem = (item) => {
-        setSelectedItem(item);
-        document.activeElement.blur();
+        setSelectedItem(item)
+        document.activeElement.blur()
         console.log(item)
+    }
+     
+    const handleClose = () => {
+        setSelectedItem(null)
     }
 
     const addToStash = async (item) => {
@@ -83,6 +87,7 @@ export default function User() {
             <SelectedItem
                 selectedItem={selectedItem}
                 addToStash={addToStash}
+                handleClose={handleClose}
             />
             <StashCollapse
                 stash={stash}
