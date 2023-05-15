@@ -11,6 +11,7 @@ export default function User() {
     // const [loading, setLoading] = useState(false)
     const [selectedItem, setSelectedItem] = useState(null)
     const [stash, setStash] = useState([])
+    const [open, setOpen] = useState(false)
 
     const { id } = useParams()
 
@@ -44,12 +45,19 @@ export default function User() {
     
     const handleSelectItem = (item) => {
         setSelectedItem(item)
+        setOpen(true)
         document.activeElement.blur()
         console.log(item)
     }
      
     const handleClose = () => {
         setSelectedItem(null)
+        setOpen(false)
+    }
+
+    const handleClick = () => {
+        setOpen((prev) => !prev)
+        console.log(open)
     }
 
     const addToStash = async (item) => {
@@ -87,6 +95,7 @@ export default function User() {
             <SelectedItem
                 selectedItem={selectedItem}
                 addToStash={addToStash}
+                handleClick={handleClick}
                 handleClose={handleClose}
             />
             <StashCollapse

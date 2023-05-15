@@ -2,13 +2,13 @@
 // top patterns - direct to pattern on Ravelry
 // future - patterns by category
 import { useParams } from "react-router"
-import { useLocation } from "react-router-dom"
+// import { useLocation } from "react-router-dom"
 import { getRavelryProjects } from "@utils/helpers"
 
 export default function Projects() {
     const { ravId } = useParams()
-    const location = useLocation()
-    const item = location.state?.stashItem
+    // const location = useLocation()
+    // const item = location.state?.stashItem
 
     const projectSearch = async (yarnPermalink) => {
         try {
