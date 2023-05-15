@@ -1,17 +1,9 @@
-import { useState } from "react";
-
-const SelectedItem = ({ selectedItem, addToStash, handleClose }) => {
-    const [open, setOpen] = useState(true)
-
-    const handleClick = () => {
-        setOpen((prev) => !prev)
-        console.log(open)
-    }
+const SelectedItem = ({ selectedItem, addToStash, handleClose, handleClick }) => {
 
     return (
         <div className="mt-4">
         {selectedItem && (
-            <div className={`modal ${open ? "modal-open flex justify-center" : "hidden"}`}>
+            <div className={`${open ? "modal-open flex justify-center" : "hidden"}`}>
                 <div className="modal-box card p-3 max-h-min md:card-side md:w-fit bg-primary shadow-xl">
                     <img className="rounded-lg max-h-60 aspect-square" src={selectedItem.photo.small_url} alt="selected yarn image" />
                     <div className="md:flex-col">
@@ -20,7 +12,7 @@ const SelectedItem = ({ selectedItem, addToStash, handleClose }) => {
                         <p className="text-neutral-content pb-4 md:pl-4">{selectedItem.yarn_weight.name} - {selectedItem.yardage} yds</p>
                         <div className="flex flex-wrap justify-evenly md:flex-col md:ml-4 md:mt-2 md:place-items-end">
                             <button onClick={() => { handleClose() }} className="btn btn-xs btn-error w-2/4 md:w-full md:order-last">close</button>
-                            <button onClick={() => { handleClick(); addToStash(selectedItem) }} className="btn btn-xs btn-accent w-2/4 md:order-first md:w-full">add to stash</button>
+                            <button onClick={() => { handleClick(); addToStash(selectedItem); handleClose() }} className="btn btn-xs btn-accent w-2/4 md:order-first md:w-full">add to stash</button>
                             <a
                                 href={`https://www.ravelry.com/yarns/library/${selectedItem.permalink}`}
                                 target="_blank"
