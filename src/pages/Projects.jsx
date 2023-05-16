@@ -4,16 +4,25 @@
 import { useLocation } from "react-router-dom"
 import { getRavelryProjects } from "@utils/helpers"
 import YarnHero from '@components/Hero/YarnHero'
+import ProjectsCarousel from "@components/Carousel/ProjectsCarousel"
+import { useEffect } from "react"
 
 export default function Projects() {
     const location = useLocation()
     const { item } = location.state
-    const { id, rav_id, name, yarn_company, yarn_weight, yardage, photo, permalink } = item;
+    const { rav_id, name, yarn_company, yarn_weight, yardage, photo, permalink } = item;
+    const patternCategories = ['clothing', 'accessories', 'home', 'toysandhobbies']
 
-    const projectSearch = async (permalink) => {
+    useEffect(() => {
+        projectSearch()
+    }, [])
+
+    const projectSearch = async () => {
         try {
-            const data = await getRavelryProjects(permalink)
-            const searchResults = data.projects.map((project) => ({
+            const data = await getRavelryProjects(item.permalink, patternCategories)
+            console.log(data)
+            const projectsData = data[0].projects
+            const searchResults = projectsData.map((project) => ({
                 pattern_id: project.pattern_id,
                 pattern_name: project.pattern_name,
                 project_name: project.name,
@@ -32,19 +41,15 @@ export default function Projects() {
         }
     }
 
-    projectSearch(item.permalink)
-
     return (
         <main>
             <YarnHero item={item} />
-            <div>
-                <h2>projects that used this yarn</h2>
-                <div>
-                    clothing
-                    accessories
-                    home
-                    toysandhobbies
-                </div>
+            <div className="bg-primary">
+                <h2 className="page-header text-center text-2xl md:text-3xl pt-4 pb-2">browse projects that use this yarn</h2>
+                <ProjectsCarousel
+                    permalink={item.permalink}
+                    pattern_category={patternCategories}
+                />
                 {/* user select filter in each category */}
                 {/* narrow by colorway */}
             </div>
