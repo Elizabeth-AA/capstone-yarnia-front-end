@@ -56,21 +56,22 @@ export default function User() {
     }
 
     const addToStash = async (item) => {
+        console.log(item)
         try {
             const data = {
-                // user_id: `${id}`,
+                user_id: 4,
+                // change user_id value to url param
                 rav_id: item.rav_id,
                 name: item.name,
-                yarn_company: item.yarn_company_name || "Unknown",
-                yarn_weight: item.yarn_weight || "Unknown",
-                yardage: item.yardage || "Unknown",
-                photo: item.first_photo,
+                yarn_company: item.yarn_company,
+                yarn_weight: item.yarn_weight,
+                yardage: item.yardage,
+                photo: item.photo || "placeholder",
                 permalink: item.permalink,
             }
             const response = await addNewStash(data)
             if (response && response.status === 201) {
                 setStash([...stash, data])
-                console.log(stash)
             } else {
                 console.error("yarn not added to stash")
             }

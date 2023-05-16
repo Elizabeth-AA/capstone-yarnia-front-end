@@ -10,7 +10,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/users' element={<User />} />
-        <Route path='/projects/:rav_id' element={<Projects />} />
+        <Route path='/yarn/:rav_id' element={<Projects />} />
       </Routes>
     </>
   )
