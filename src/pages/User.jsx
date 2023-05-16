@@ -56,7 +56,6 @@ export default function User() {
     }
 
     const addToStash = async (item) => {
-        console.log(item)
         try {
             const data = {
                 user_id: 4,
@@ -81,7 +80,7 @@ export default function User() {
     }
 
     return (
-        <>
+        <main>
             <Autocomplete
                 items={items}
                 search={search}
@@ -98,6 +97,6 @@ export default function User() {
             <StashCollapse
                 stash={stash}
             />
-        </>
+        </main>
     )
 }

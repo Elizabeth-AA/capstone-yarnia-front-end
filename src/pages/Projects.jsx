@@ -1,48 +1,52 @@
 // detailed yarn info
 // top patterns - direct to pattern on Ravelry
 // future - patterns by category
-import { useParams } from "react-router"
 import { useLocation } from "react-router-dom"
 import { getRavelryProjects } from "@utils/helpers"
+import YarnHero from '@components/Hero/YarnHero'
 
 export default function Projects() {
-    const { ravId } = useParams()
     const location = useLocation()
     const { item } = location.state
     const { id, rav_id, name, yarn_company, yarn_weight, yardage, photo, permalink } = item;
 
-    // const item = location.state?.stashItem
-
-    const projectSearch = async (yarnPermalink) => {
+    const projectSearch = async (permalink) => {
         try {
-            const data = await getRavelryProjects(yarnPermalink)
-            const searchResults = data.projects.map((project) => {
-                
-            })
+            const data = await getRavelryProjects(permalink)
+            const searchResults = data.projects.map((project) => ({
+                pattern_id: project.pattern_id,
+                pattern_name: project.pattern_name,
+                project_name: project.name,
+                rating: project.rating,
+                updated_at: project.updated_at,
+                status: project.status_name,
+                user: project.user,
+                user_id: project.user_id,
+                craft: project.craft_name,
+                photo: project.first_photo,
+                permalink: project.permalink,
+            }))
+            console.log(searchResults)
         } catch (error) {
             console.log(error)
         }
     }
 
+    projectSearch(item.permalink)
+
     return (
         <main>
+            <YarnHero item={item} />
             <div>
-                <figure><img className="max-h-32" src={photo.small_url} alt="skein of yarn" /></figure>
+                <h2>projects that used this yarn</h2>
                 <div>
-                    <h1>{name}</h1>
-                    <p>by {yarn_company}</p>
-                    <p>{yarn_weight.name}</p>
-                    <p>{yardage} yds</p>
+                    clothing
+                    accessories
+                    home
+                    toysandhobbies
                 </div>
-                <div>
-                    <h2>projects that used this yarn</h2>
-                    {/* search for projects on rav using item.permalink */}
-                    {/* /projects/search.json?yarn-link=YARN-PERMALINK */}
-                    {/* filter for pattern categories */}
-                    {/* /projects/search#pc=clothing&sort=completed&view=thumbs */}
-                    {/* accessories, home, toys & hobbies */}
-                    {/* narrow by colorway */}
-                </div>
+                {/* user select filter in each category */}
+                {/* narrow by colorway */}
             </div>
         </main>
     )

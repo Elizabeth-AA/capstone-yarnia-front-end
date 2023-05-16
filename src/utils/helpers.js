@@ -23,9 +23,9 @@ export async function addNewStash(data) {
   }
 }
 
-export async function getRavelryProjects(yarnPermalink) {
+export async function getRavelryProjects(permalink, pattern_category) {
   try {
-    const response = await ravInstance.get(`projects/search.json?yarn-link=${yarnPermalink}`);
+    const response = await ravInstance.get(`projects/search.json?yarn-link=${permalink}&page_size=8&sort=best#pc=${pattern_category}`);
     if (response.status === 200) {
       return response.data;
     }
