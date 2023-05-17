@@ -23,12 +23,16 @@ export async function addNewStash(data) {
   }
 }
 
-export async function getRavelryProjects(yarnPermalink) {
+export async function getRavelryProjects(permalink, patternCategories) {
   try {
-    const response = await ravInstance.get(`projects/search.json?yarn-link=${yarnPermalink}`);
-    if (response.status === 200) {
-      return response.data;
-    }
+    const promises = patternCategories.map(async (category) => {
+      const response = await ravInstance.get(`projects/search.json?yarn-link=${permalink}&page_size=8&sort=best&pc=${category}`);
+      if (response.status === 200) {
+        return response.data;
+      }
+    })
+    const results = await Promise.all(promises)
+    return results
   } catch (e) {
     console.log(e)
   }

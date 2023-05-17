@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router"
 import { getRavelryYarn, addNewStash } from "@utils/helpers"
 import Autocomplete from "@components/Search/Autocomplete"
 import SelectedItem from "@components/Modal/SelectedItem"
@@ -12,8 +11,6 @@ export default function User() {
     const [selectedItem, setSelectedItem] = useState(null)
     const [stash, setStash] = useState([])
     const [open, setOpen] = useState(false)
-
-    const { id } = useParams()
 
     const search = async (searchTerm) => {
         try {
@@ -47,7 +44,6 @@ export default function User() {
         setSelectedItem(item)
         setOpen(true)
         document.activeElement.blur()
-        console.log(item)
     }
      
     const handleClose = () => {
@@ -57,24 +53,24 @@ export default function User() {
 
     const handleClick = () => {
         setOpen((prev) => !prev)
-        console.log(open)
     }
 
     const addToStash = async (item) => {
         try {
             const data = {
-                // user_id: `${id}`,
+                user_id: 4,
+                // change user_id value to url param
                 rav_id: item.rav_id,
                 name: item.name,
-                yarn_company: item.yarn_company_name,
+                yarn_company: item.yarn_company,
                 yarn_weight: item.yarn_weight,
                 yardage: item.yardage,
-                photo: item.first_photo,
+                photo: item.photo || "placeholder",
                 permalink: item.permalink,
             }
             const response = await addNewStash(data)
             if (response && response.status === 201) {
-                setStash([...stash, item])
+                setStash([...stash, data])
             } else {
                 console.error("yarn not added to stash")
             }
@@ -84,7 +80,7 @@ export default function User() {
     }
 
     return (
-        <>
+        <main>
             <Autocomplete
                 items={items}
                 search={search}
@@ -101,6 +97,6 @@ export default function User() {
             <StashCollapse
                 stash={stash}
             />
-        </>
+        </main>
     )
 }
