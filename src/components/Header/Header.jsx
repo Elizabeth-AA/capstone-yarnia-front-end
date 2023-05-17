@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { NavLink } from "react-router-dom"
 import NavItem from "@components/Header/NavItem"
 import NavLinks from './links.json'
 import logo from '@assets/icons/icons8-yarn-64.png'
