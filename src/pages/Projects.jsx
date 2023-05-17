@@ -36,6 +36,7 @@ export default function Projects() {
                 })) 
             })
             setSearchResults(results)
+            console.log(searchResults)
         } catch (e) {
             console.log(e)
         }   
