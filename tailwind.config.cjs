@@ -2,25 +2,42 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  
   theme: {
+    screens: {
+      'sm': '250px',
+      'md': '425px',
+      'lg': '768px',
+      'xl': '1366px',
+    },
+    
     extend: {
-      colors: {
-        'instock-black': '#13182C',
-        'instock-slate': '#5C667E',
-        'instock-graphite': '#232940',
-        'instock-green': '#158463',
-        'instock-green-o': 'rgba(21, 132, 99, 0.07)',
-        'instock-indigo': '#2E66E5',
-        'instock-cloud': '#BDC5D5',
-        'instock-light-grey': '#F7F8F9',
-        'instock-red': '#C94515',
-        'instock-red-o': 'rgba(201, 69, 21, 0.07)',
-        'instock-white': '#FFFFFF',
-      },
       fontFamily: {
-        sans: ['Titillium Web', 'Rubik', ...defaultTheme.fontFamily.sans],
+        sans: ['Lato', ...defaultTheme.fontFamily.sans],
+        serif: ['Retrophilia', ...defaultTheme.fontFamily.serif]
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          'primary': '#15311A',
+          'secondary': '#E0570D',
+          'accent': '#d89223',
+          'neutral': '#131F1A',
+          'base-100': '#6B9472',
+          'base-200': '#2c6736',
+          'base-content': '#FAFAF9',
+          'error': '#881508',
+        }
+      }
+    ]
+  },
+  
+
+  plugins: [require('@tailwindcss/typography'), require ('daisyui')],
 }
+// 'yarnia-lightest': '#FAFAF9'
+// #B7BF96 base-100 #4E7655

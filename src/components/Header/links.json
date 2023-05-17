@@ -1,0 +1,14 @@
+[
+    {
+      "path": "/users",
+      "name": "stash"
+    },
+    {
+      "path": "/yarn",
+      "name": "projects"
+    },
+    {
+      "path": "/about",
+      "name": "about"
+    }
+]
