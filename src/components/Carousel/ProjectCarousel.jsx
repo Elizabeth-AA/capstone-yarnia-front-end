@@ -11,8 +11,19 @@ export default function ProjectCarousel({ searchResults }) {
             <div className="carousel carousel-start relative p-4 space-x-2 bg-neutral rounded-box">
             {categoryProjects.length > 0 ? (
               categoryProjects.map((project, index) => (
-                <div className="carousel-item" id={`${category}_slide${index}`} key={`${category}-${index}`}>
+                <div
+                  className="carousel-item relative"
+                  id={`${category}_slide${index}`}
+                  key={`${category}-${index}`}
+                >
                   <img className="rounded-box h-40 md:h-48 lg:h-56" src={project.photo.small_url} />
+                  <a
+                    href={`https://www.ravelry.com/projects/${project.user.username}/${project.permalink}`}
+                    target="_blank"
+                    className="btn btn-xs absolute right-0"
+                  >
+                    view
+                  </a>
                 </div>
               ))
             ) : (
