@@ -2,11 +2,10 @@
 // top patterns - direct to pattern on Ravelry
 // future - patterns by category
 import { useLocation } from "react-router-dom"
+import { useEffect, useState } from "react"
 import { getRavelryProjects } from "@utils/helpers"
 import YarnHero from '@components/Hero/YarnHero'
-import ProjectItem from "../components/Carousel/ProjectItem"
-import ProjectsCarousel from "@components/Carousel/ProjectsCarousel"
-import { useEffect, useState } from "react"
+import ProjectCarousel from "@components/Carousel/ProjectCarousel"
 
 export default function Projects() {
     const location = useLocation()
@@ -36,15 +35,12 @@ export default function Projects() {
                     category: category,
                 })) 
             })
-            console.log(data)
             setSearchResults(results)
         } catch (e) {
             console.log(e)
-        }
-                
-            }
-   
-    
+        }   
+   }
+       
     useEffect(() => {
         projectSearch()
     }, [])
@@ -53,11 +49,8 @@ export default function Projects() {
         <main>
             <YarnHero item={item} />
             <div className="bg-primary">
-                <h2 className="page-header text-center text-2xl md:text-3xl pt-4 pb-2">browse projects that use this yarn</h2>
-                <ProjectItem searchResults={searchResults} />
-                {/* <div>{carouselComponents}</div> */}
-                {/* user select filter in each category */}
-                {/* narrow by colorway */}
+                <h2 className="page-header text-center text-2xl md:text-3xl lg:text-4xl pt-6 pb-4">browse projects that use this yarn</h2>
+                <ProjectCarousel searchResults={searchResults} />
             </div>
         </main>
     )
