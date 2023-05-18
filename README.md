@@ -11,6 +11,7 @@ Viewing projects is useful for learning how the yarn knits up. This helps with v
 
 ### Planned for Phase Two
 user auth for personal stash pages <br>
+front and back end validation <br>
 search using yarn colorways <br>
 user added notes for stash items <br>
 filter within categories <br>
