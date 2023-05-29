@@ -1,7 +1,7 @@
 import AuthHeader from "@components/Auth/AuthHeader"
 import RegisterForm from "@components/Auth/RegisterForm"
 
-export default function SignUp() {
+export default function Signup() {
     return (
         <>
             <AuthHeader
