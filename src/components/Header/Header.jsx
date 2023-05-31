@@ -1,7 +1,7 @@
 import { useState } from "react"
 import NavItem from "@components/Header/NavItem"
 import NavLinks from './links.json'
-import logo from '@assets/icons/icons8-yarn-64.png'
+import logo from '@assets/icons/yarnia-icon.png'
 
 export default function Header() {
     
