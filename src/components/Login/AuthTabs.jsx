@@ -7,11 +7,11 @@ export default function AuthTabs() {
     const [activeTab, setActiveTab] = useState(0);
   
     return (
-      <div className="tabs">
+      <div className="tabs flex items-start">
         {tabs.map((tab, index) => (
           <button
             key={index}
-            className={`tab tab-lg tab-lifted ${activeTab === index ? "tab-active" : ""}`}
+            className={`tab tab-lg tab-lifted font-medium ${activeTab === index ? "tab-active" : ""}`}
             onClick={() => setActiveTab(index)}
           >
             {tab}

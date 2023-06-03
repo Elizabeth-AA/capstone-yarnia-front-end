@@ -31,8 +31,9 @@ export default function AuthForm() {
 
     return (
       <>
-        <div className="-space-y-px">
+        <div className="flex flex-wrap -mx-2 mt-2">
           {loginFields.map((field, index) =>
+            <div key={index} className="w-full px-2 mb-1">
             <AuthInput
               key={index}
               handleChange={handleChange}
@@ -45,6 +46,7 @@ export default function AuthForm() {
               isRequired={field.isRequired}
               placeholder={field.placeholder}
             />
+            </div>
           )}
         </div>
         <AuthBtn handleSubmit={handleSubmit} text="Login" />

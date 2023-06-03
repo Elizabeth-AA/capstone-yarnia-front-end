@@ -30,8 +30,9 @@ export default function RegisterForm() {
 
     return (
       <>
-        <div className="-space-y-px">
+        <div className="flex flex-wrap -mx-2 mt-2">
           {signupFields.map((field, index) =>
+            <div key={index} className="w-full px-2 mb-1">
             <AuthInput
               key={index}
               handleChange={handleChange}
@@ -44,6 +45,7 @@ export default function RegisterForm() {
               isRequired={field.isRequired}
               placeholder={field.placeholder}
             />
+            </div>
           )}
         </div>
         <AuthBtn handleSubmit={handleSubmit} text="Signup" />

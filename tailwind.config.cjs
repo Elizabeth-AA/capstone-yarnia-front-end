@@ -25,11 +25,12 @@ module.exports = {
         mytheme: {
           'primary': '#200901',
           'secondary': '#F2A127',
-          // 'accent': '#d89223',
+          'accent': '#7d2304',
+          'accent-content': '#f5b452',
           'neutral': '#0F0400',
           'base-100': '#070200',
           // 'base-200': '#2c6736',
-          // 'base-content': '#FFFACD',
+          'base-content': '#FFFACD',
           // 'error': '#881508',
         }
       }
