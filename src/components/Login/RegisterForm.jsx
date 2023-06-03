@@ -29,7 +29,7 @@ export default function RegisterForm() {
     }
 
     return (
-      <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+      <>
         <div className="-space-y-px">
           {signupFields.map((field, index) =>
             <AuthInput
@@ -47,6 +47,6 @@ export default function RegisterForm() {
           )}
         </div>
         <AuthBtn handleSubmit={handleSubmit} text="Signup" />
-      </form>
+      </>
     )
 }

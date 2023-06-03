@@ -4,7 +4,7 @@ import { LogInFields } from '@components/Login/FormField'
 import AuthInput from '@components/Login/AuthInput'
 import AuthBtn from "@components/Login/AuthBtn"
 
-export default function AuthForm({ closeModal }) {
+export default function AuthForm() {
     const [loginFields, setLoginFields] = useState(LogInFields.map(field => ({ ...field, value: '' })))
 
     const handleChange = (e) => {
@@ -30,7 +30,7 @@ export default function AuthForm({ closeModal }) {
     }
 
     return (
-      <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+      <>
         <div className="-space-y-px">
           {loginFields.map((field, index) =>
             <AuthInput
@@ -48,7 +48,6 @@ export default function AuthForm({ closeModal }) {
           )}
         </div>
         <AuthBtn handleSubmit={handleSubmit} text="Login" />
-        <button className="btn mt-4" onClick={closeModal}>Close</button>
-      </form>
+      </>
     )
 }

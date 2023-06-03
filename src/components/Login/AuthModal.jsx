@@ -1,44 +1,37 @@
-import { useState } from "react";
-import AuthTabs from "./AuthTabs"
+import { useState } from 'react'
+import AuthTabs from './AuthTabs'
 
 export default function AuthModal() {
-    const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-    const openModal = () => {
-        setIsModalOpen(true);
-    }
-    
-    const closeModal = () => {
-        setIsModalOpen(false);
-    }
+  const openModal = () => {
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
 
   return (
     <div>
-      <button className="btn" onClick={openModal}>
-        Open
+      <button className="btn-secondary btn" onClick={openModal}>
+        Click Me
       </button>
       <input
         type="checkbox"
-        className="modal-toggle"
         id="auth_modal_checkbox"
+        className="modal-toggle"
         checked={isModalOpen}
         onChange={closeModal}
       />
-      <label className="modal-toggle-label" htmlFor="auth_modal_checkbox">
-        Open
+      <label htmlFor="auth_modal_checkbox" className="modal">
+        <div className="modal-box">
+          <button className="btn-ghost btn-sm btn-circle btn absolute right-2 top-2" onClick={closeModal}>
+            ✕
+          </button>
+          <AuthTabs closeModal={closeModal} />
+        </div>
       </label>
-      {isModalOpen && (
-        <dialog id="auth_modal" className="modal">
-          <div className="modal-box">
-            <AuthTabs />
-            <div className="modal-action">
-              <button className="btn" onClick={closeModal}>
-                Close
-              </button>
-            </div>
-          </div>
-        </dialog>
-      )}
     </div>
   )
 }
