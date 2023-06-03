@@ -1,4 +1,6 @@
 import { useState } from "react"
+import AuthForm from "./AuthForm";
+import RegisterForm from './RegisterForm'
 
 export default function AuthTabs() {
     const tabs = ["Login", "Signup"];
@@ -9,14 +11,14 @@ export default function AuthTabs() {
         {tabs.map((tab, index) => (
           <button
             key={index}
-            className={`tab tab-lifted ${activeTab === index ? "tab-active" : ""}`}
+            className={`tab tab-lg tab-lifted ${activeTab === index ? "tab-active" : ""}`}
             onClick={() => setActiveTab(index)}
           >
             {tab}
           </button>
         ))}
-        <div className={`card ${activeTab !== 0 ? "hidden" : ""}`}>Content 1</div>
-        <div className={`card ${activeTab !== 1 ? "hidden" : ""}`}>Content 2</div>
+        <div className={`card ${activeTab !== 0 ? "hidden" : ""}`}><AuthForm /></div>
+        <div className={`card ${activeTab !== 1 ? "hidden" : ""}`}><RegisterForm /></div>
       </div>
     );
 }

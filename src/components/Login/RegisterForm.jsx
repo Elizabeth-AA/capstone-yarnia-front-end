@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { SignUpFields } from '@components/Auth/FormFields'
-import AuthInput from "@components/Auth/AuthInput"
-import AuthBtn from '@components/Auth/AuthBtn'
-import { signup } from '@utils/helpers.js'
+import { SignUpFields } from '@components/Login/FormField'
+import AuthInput from "@components/Login/AuthInput"
+import AuthBtn from '@components/Login/AuthBtn'
+// import { signup } from '@utils/helpers.js'
 
 export default function RegisterForm() {
     const [signupFields, setSignupFields] = useState(SignUpFields)

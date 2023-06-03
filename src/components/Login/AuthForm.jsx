@@ -1,10 +1,10 @@
 import { useState } from "react"
-import { login } from '@utils/helpers'
-import { LogInFields } from '@components/Auth/FormFields'
-import AuthInput from '@components/Auth/AuthInput'
-import AuthBtn from "@components/Auth/AuthBtn"
+// import { login } from '@utils/helpers'
+import { LogInFields } from '@components/Login/FormField'
+import AuthInput from '@components/Login/AuthInput'
+import AuthBtn from "@components/Login/AuthBtn"
 
-export default function AuthForm() {
+export default function AuthForm({ closeModal }) {
     const [loginFields, setLoginFields] = useState(LogInFields.map(field => ({ ...field, value: '' })))
 
     const handleChange = (e) => {
@@ -48,6 +48,7 @@ export default function AuthForm() {
           )}
         </div>
         <AuthBtn handleSubmit={handleSubmit} text="Login" />
+        <button className="btn mt-4" onClick={closeModal}>Close</button>
       </form>
     )
 }

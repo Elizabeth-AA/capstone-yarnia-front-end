@@ -23,7 +23,7 @@
   }
 
   .page-header {
-    @apply font-serif text-secondary lowercase tracking-wide text-[2.5rem] leading-9 md:text-[2.75rem] lg:text-[3rem] md:leading-10
+    @apply font-serif text-secondary lowercase tracking-wide text-[2.5rem] leading-9 md:leading-[2.75rem] md:text-[2.75rem] lg:text-[3rem]
   }
 
   .card-header {
