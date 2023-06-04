@@ -1,4 +1,5 @@
 import close from "@assets/icons/yarnia-scissors.png"
+import rav_direct from "@assets/icons/yarnia-rav.png"
 
 const SelectedItem = ({ selectedItem, addToStash, handleClose, handleClick }) => {
 
@@ -19,9 +20,9 @@ const SelectedItem = ({ selectedItem, addToStash, handleClose, handleClick }) =>
                             <a
                                 href={`https://www.ravelry.com/yarns/library/${selectedItem.permalink}`}
                                 target="_blank"
-                                className="btn btn-xs btn-accent border-none w-2/4 md:w-full md:mb-4"
+                                className="w-20 md:w-full md:mb-4"
                             >
-                                view on ravelry
+                                <img src={rav_direct} className="border-4 solid border-accent rounded-lg" />
                             </a>
                         </div>
                     </div>
