@@ -3,6 +3,7 @@ import { getRavelryYarn, addNewStash } from "@utils/helpers"
 import Autocomplete from "@components/Search/Autocomplete"
 import SelectedItem from "@components/Modal/SelectedItem"
 import StashCollapse from "@components/Collapse/StashCollapse"
+import SearchText from "@components/Text/SearchText"
 
 export default function Stash() {
     const [searchTerm, setSearchTerm] = useState("")
@@ -79,6 +80,7 @@ export default function Stash() {
 
     return (
         <main className="section">
+            <SearchText />
             <Autocomplete
                 items={items}
                 search={search}

@@ -16,13 +16,13 @@ const Autocomplete = ({ items, search, onChange, value, onSelect }) => {
             <div className={`dropdown w-9/12 ${open ? 'dropdown-open' : ''}`} ref={ref}>
                 <input
                     type="text"
-                    className="bg-primary input input-bordered w-full text-neutral-content md:text-lg lg:text-xl"
+                    className="bg-accent placeholder-base-content input input-bordered w-full md:text-lg lg:text-xl"
                     value={value}
                     onChange={handleInputChange}
                     placeholder="Search for yarn by name"
                     tabIndex={0}
                 />
-                <div className="dropdown-content bg-neutral top-14 max-h-96 overflow-auto flex-col rounded-md  md:text-lg lg:text-xl">
+                <div className="dropdown-content bg-base-100 top-14 max-h-96 overflow-auto flex-col rounded-md  md:text-lg lg:text-xl">
                     <div 
                         className="menu menu-compact"
                         style={{ width: ref.current?.clientWidth }}

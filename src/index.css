@@ -31,11 +31,11 @@
   }
 
   .subheader {
-    @apply font-sans text-xl md:text-2xl lg:text-3xl text-neutral-content font-semibold
+    @apply font-sans text-lg md:text-xl lg:text-2xl font-semibold
   }
 
   .body-text {
-    @apply font-sans text-base md:text-lg pb-4 text-neutral-content
+    @apply font-sans text-base md:text-lg pb-4 text-base-content
   }
 
   .btn-text {
