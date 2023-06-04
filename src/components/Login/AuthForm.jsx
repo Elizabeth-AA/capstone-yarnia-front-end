@@ -3,6 +3,7 @@ import { useState } from "react"
 import { LogInFields } from '@components/Login/FormField'
 import AuthInput from '@components/Login/AuthInput'
 import AuthBtn from "@components/Login/AuthBtn"
+import AuthHeader from "@components/Login/AuthHeader"
 
 export default function AuthForm() {
     const [loginFields, setLoginFields] = useState(LogInFields.map(field => ({ ...field, value: '' })))
@@ -31,6 +32,9 @@ export default function AuthForm() {
 
     return (
       <>
+      <AuthHeader
+        heading="log in to your account"
+      />
         <div className="flex flex-wrap -mx-2 mt-2">
           {loginFields.map((field, index) =>
             <div key={index} className="w-full px-2 mb-1">

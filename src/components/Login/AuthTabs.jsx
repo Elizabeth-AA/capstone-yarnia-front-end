@@ -11,7 +11,7 @@ export default function AuthTabs() {
         {tabs.map((tab, index) => (
           <button
             key={index}
-            className={`tab tab-lg tab-lifted font-medium ${activeTab === index ? "tab-active" : ""}`}
+            className={`tab tab-lg tab-lifted font-medium bg-accent ${activeTab === index ? "tab-active" : ""}`}
             onClick={() => setActiveTab(index)}
           >
             {tab}

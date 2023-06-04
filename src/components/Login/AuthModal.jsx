@@ -25,7 +25,7 @@ export default function AuthModal() {
         onChange={closeModal}
       />
       <label htmlFor="auth_modal_checkbox" className="modal">
-        <div className="modal-box bg-accent flex flex-col items-center justify-center">
+        <div className="modal-box bg-primary flex flex-col items-center justify-center">
           <button className="btn-ghost btn-sm btn-circle btn absolute right-2 top-2" onClick={closeModal}>
             ✕
           </button>
