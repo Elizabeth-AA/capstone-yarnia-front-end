@@ -1,8 +1,8 @@
 export const LogInFields = [
     {
         labelText:"Email address",
-        labelFor:"email-address",
-        id:"email-address",
+        labelFor:"login-email-address",
+        id:"login-email-address",
         name:"email",
         type:"email",
         autoComplete:"email",
@@ -11,8 +11,8 @@ export const LogInFields = [
     },
     {
         labelText:"Password",
-        labelFor:"password",
-        id:"password",
+        labelFor:"login-password",
+        id:"login-password",
         name:"password",
         type:"password",
         autoComplete:"current-password",

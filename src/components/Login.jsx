@@ -1,7 +1,7 @@
 import AuthHeader from "@components/Auth/AuthHeader"
 import AuthForm from "@components/Auth/AuthForm"
 
-export default function LogIn() {
+export default function Login() {
     return (
         <>
             <AuthHeader

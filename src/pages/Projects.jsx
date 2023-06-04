@@ -1,6 +1,3 @@
-// detailed yarn info
-// top patterns - direct to pattern on Ravelry
-// future - patterns by category
 import { useLocation } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { getRavelryProjects } from "@utils/helpers"
@@ -36,7 +33,6 @@ export default function Projects() {
                 })) 
             })
             setSearchResults(results)
-            console.log(searchResults)
         } catch (e) {
             console.log(e)
         }   

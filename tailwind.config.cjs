@@ -23,19 +23,27 @@ module.exports = {
     themes: [
       {
         mytheme: {
-          'primary': '#15311A',
-          'secondary': '#E0570D',
-          'accent': '#d89223',
-          'neutral': '#131F1A',
-          'base-100': '#6B9472',
-          'base-200': '#2c6736',
-          'base-content': '#FAFAF9',
-          'error': '#881508',
+          'primary': '#200901',
+          'secondary': '#F2A127',
+          'accent': '#7d2304',
+          'accent-content': '#f5b452',
+          'neutral': '#0F0400',
+          'base-100': '#070200',
+          // 'base-200': '#2c6736',
+          'base-content': '#FFFACD',
+          // 'error': '#881508',
         }
       }
     ]
   },
-  
+  // 'primary': '#15311A',
+  // 'secondary': '#E0570D',
+  // 'accent': '#d89223',
+  // 'neutral': '#131F1A',
+  // 'base-100': '#6B9472',
+  // 'base-200': '#2c6736',
+  // 'base-content': '#FAFAF9',
+  // 'error': '#881508',
 
   plugins: [require('@tailwindcss/typography'), require ('daisyui')],
 }
