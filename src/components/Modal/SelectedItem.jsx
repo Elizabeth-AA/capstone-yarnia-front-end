@@ -1,7 +1,7 @@
 const SelectedItem = ({ selectedItem, addToStash, handleClose, handleClick }) => {
 
     return (
-        <div className="mt-4">
+        <div>
         {selectedItem && (
             <div className={`${open ? "modal-open flex justify-center" : "hidden"}`}>
                 <div className="modal-box card p-3 mb-4 md:card-side w-fit bg-neutral shadow-xl">

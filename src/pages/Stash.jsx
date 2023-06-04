@@ -79,23 +79,25 @@ export default function Stash() {
     }
 
     return (
-        <main className="">
-            <section className="section bg-primary">
-            <SearchText />
-            <Autocomplete
-                items={items}
-                search={search}
-                value={searchTerm}
-                onChange={(item) => setSearchTerm(item)}
-                onSelect={handleSelectItem}
-            />
-            <SelectedItem
-                selectedItem={selectedItem}
-                addToStash={addToStash}
-                handleClick={handleClick}
-                handleClose={handleClose}
-            />
-            </section>
+        <main>
+            <div className="h-max-content w-max-content rounded-lg bg-gradient-to-r from-accent via-secondary to-error p-1 my-6 md:mx-10">
+                <div className="bg-primary mx-1 my-1 rounded-lg">
+                    <SearchText />
+                    <Autocomplete
+                        items={items}
+                        search={search}
+                        value={searchTerm}
+                        onChange={(item) => setSearchTerm(item)}
+                        onSelect={handleSelectItem}
+                    />
+                    <SelectedItem
+                        selectedItem={selectedItem}
+                        addToStash={addToStash}
+                        handleClick={handleClick}
+                        handleClose={handleClose}
+                    />
+                </div>
+            </div>
             <StashCollapse
                 stash={stash}
             />

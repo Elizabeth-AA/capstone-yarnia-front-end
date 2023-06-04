@@ -19,8 +19,12 @@
 
 @layer components {
   .section {
-    @apply  my-8 md:mx-8 xl:mx-auto xl:max-w-7xl rounded-lg
+    @apply my-8 md:mx-8 xl:mx-auto xl:max-w-7xl rounded-lg 
   }
+
+  /* .bg-gradient {
+    @apply absolute -inset-1 rounded-lg bg-gradient-to-tr from-primary via-accent to-secondary opacity-75
+  } */
 
   .page-header {
     @apply font-serif text-secondary lowercase tracking-wide text-[2.5rem] leading-9 md:leading-[2.75rem] md:text-[2.75rem] lg:text-[3rem]
@@ -31,11 +35,11 @@
   }
 
   .subheader {
-    @apply font-sans text-lg md:text-xl lg:text-2xl font-semibold
+    @apply font-sans text-lg md:text-2xl font-semibold
   }
 
   .body-text {
-    @apply font-sans text-base md:text-lg pb-4 text-base-content
+    @apply font-sans text-sm md:text-lg pb-4 text-base-content
   }
 
   .btn-text {
