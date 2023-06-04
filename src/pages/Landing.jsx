@@ -1,5 +1,6 @@
 import LandingHero from "@components/Hero/LandingHero"
-import AuthModal from "../components/Login/AuthModal"
+import AuthModal from "@components/Login/AuthModal"
+import About from "@components/About"
 
 export default function Landing() {
     return (
@@ -10,6 +11,7 @@ export default function Landing() {
                 <AuthModal />
             </div>
         </div>
+        <About />
         </>
     )
 }

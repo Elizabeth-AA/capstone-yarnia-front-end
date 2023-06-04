@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Landing />} />
-        <Route path='/stash' element={<User />} />
+        <Route path='/users' element={<User />} />
         <Route path='/yarn/:rav_id' element={<Projects />} />
       </Routes>
     </>

@@ -19,7 +19,7 @@
 
 @layer components {
   .section {
-    @apply my-0 mx-4 md:mx-8 xl:mx-auto xl:max-w-7xl
+    @apply my-0 mx-4 md:mx-8 xl:mx-auto xl:max-w-7xl rounded-lg
   }
 
   .page-header {
@@ -28,6 +28,14 @@
 
   .card-header {
     @apply font-serif text-secondary text-xl pt-2 md:pt-0 tracking-wider
+  }
+
+  .subheader {
+    @apply font-sans text-xl md:text-2xl lg:text-3xl text-neutral-content font-semibold
+  }
+
+  .body-text {
+    @apply font-sans text-base md:text-lg pb-4 text-neutral-content
   }
 
   .btn-text {
