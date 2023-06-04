@@ -10,7 +10,7 @@ export default function AuthBtn({
             type==='Button' ?
             <button
                 type={action}
-                className="btn btn-secondary mt-2 btn-outline btn-sm btn-block group relative"
+                className="btn btn-secondary mt-2 btn-outline btn-md btn-block group relative"
                 onSubmit={handleSubmit}
             >
 
