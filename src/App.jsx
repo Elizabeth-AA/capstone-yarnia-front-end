@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Header from '@components/Header/Header'
-import User from '@pages/User'
-import Projects from '@pages/Projects'
 import Landing from '@pages/Landing'
+import Stash from '@pages/Stash'
+import Projects from '@pages/Projects'
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Landing />} />
-        <Route path='/users' element={<User />} />
+        <Route path='/users' element={<Stash />} />
         <Route path='/yarn/:rav_id' element={<Projects />} />
       </Routes>
     </>

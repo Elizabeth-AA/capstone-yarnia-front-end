@@ -4,7 +4,7 @@ import Autocomplete from "@components/Search/Autocomplete"
 import SelectedItem from "@components/Modal/SelectedItem"
 import StashCollapse from "@components/Collapse/StashCollapse"
 
-export default function User() {
+export default function Stash() {
     const [searchTerm, setSearchTerm] = useState("")
     const [items, setItems] = useState([])
     const [selectedItem, setSelectedItem] = useState(null)
