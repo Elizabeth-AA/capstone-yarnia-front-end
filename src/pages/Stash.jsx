@@ -79,7 +79,8 @@ export default function Stash() {
     }
 
     return (
-        <main className="section">
+        <main className="">
+            <section className="section bg-primary">
             <SearchText />
             <Autocomplete
                 items={items}
@@ -94,6 +95,7 @@ export default function Stash() {
                 handleClick={handleClick}
                 handleClose={handleClose}
             />
+            </section>
             <StashCollapse
                 stash={stash}
             />

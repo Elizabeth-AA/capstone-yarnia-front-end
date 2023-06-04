@@ -16,7 +16,7 @@ const Autocomplete = ({ items, search, onChange, value, onSelect }) => {
             <div className={`dropdown w-9/12 ${open ? 'dropdown-open' : ''}`} ref={ref}>
                 <input
                     type="text"
-                    className="bg-accent placeholder-base-content input input-bordered w-full md:text-lg lg:text-xl"
+                    className="bg-accent placeholder-base-content input input-bordered w-full mb-4 md:text-lg lg:text-xl"
                     value={value}
                     onChange={handleInputChange}
                     placeholder="Search for yarn by name"
