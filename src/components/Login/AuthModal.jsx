@@ -13,7 +13,7 @@ export default function AuthModal() {
   }
 
   return (
-    <div className=''>
+    <div className='flex justify-center'>
       <button className="btn-secondary btn" onClick={openModal}>
         Click Me
       </button>
