@@ -78,7 +78,7 @@ export default function Stash() {
     }
 
     return (
-        <main>
+        <main className="section">
             <Autocomplete
                 items={items}
                 search={search}
