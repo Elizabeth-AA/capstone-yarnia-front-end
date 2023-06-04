@@ -39,6 +39,6 @@
   }
 
   .btn-text {
-    @apply font-sans text-secondary lowercase font-normal text-sm md:text-base lg:font-semibold tracking-wide lg:tracking-widest
+    @apply font-sans text-secondary lowercase font-normal text-sm md:text-base lg:text-lg lg:font-semibold tracking-wide lg:tracking-widest
   }
 }
