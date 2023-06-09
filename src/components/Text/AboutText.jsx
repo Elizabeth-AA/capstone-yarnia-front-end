@@ -1,4 +1,4 @@
-export default function About() {
+export default function AboutText() {
     return (
     <div className="section bg-primary my-6 pt-4 px-4">
         <h2 className="subheader text-secondary pb-4">Discover Inspiring Projects for Your Favourite Skeins</h2>

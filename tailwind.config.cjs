@@ -31,7 +31,7 @@ module.exports = {
           'base-100': '#070200',
           // 'base-200': '#2c6736',
           'base-content': '#FFFACD',
-          // 'error': '#881508',
+          'error': '#570318',
         }
       }
     ]

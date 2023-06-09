@@ -2,9 +2,10 @@ import { useEffect, useState } from "react"
 import { getRavelryYarn, addNewStash } from "@utils/helpers"
 import Autocomplete from "@components/Search/Autocomplete"
 import SelectedItem from "@components/Modal/SelectedItem"
-import StashCollapse from "@components/Collapse/StashCollapse"
+import StashCard from "@components/Card/StashCard"
+import SearchText from "@components/Text/SearchText"
 
-export default function User() {
+export default function Stash() {
     const [searchTerm, setSearchTerm] = useState("")
     const [items, setItems] = useState([])
     const [selectedItem, setSelectedItem] = useState(null)
@@ -79,22 +80,37 @@ export default function User() {
 
     return (
         <main>
-            <Autocomplete
-                items={items}
-                search={search}
-                value={searchTerm}
-                onChange={(item) => setSearchTerm(item)}
-                onSelect={handleSelectItem}
-            />
-            <SelectedItem
-                selectedItem={selectedItem}
-                addToStash={addToStash}
-                handleClick={handleClick}
-                handleClose={handleClose}
-            />
-            <StashCollapse
-                stash={stash}
-            />
+            <div className="section-border">
+                <div className="section-content">
+                    <SearchText />
+                    <Autocomplete
+                        items={items}
+                        search={search}
+                        value={searchTerm}
+                        onChange={(item) => setSearchTerm(item)}
+                        onSelect={handleSelectItem}
+                    />
+                    <SelectedItem
+                        selectedItem={selectedItem}
+                        addToStash={addToStash}
+                        handleClick={handleClick}
+                        handleClose={handleClose}
+                    />
+                </div>
+            </div>
+            {stash && stash.length > 0 && (
+                <div className="section-border">
+                    <div className="section-content">
+                        <section className="w-full mx-auto flex flex-wrap justify-center">
+                            {stash.map((item) => (
+                                <StashCard
+                                    item={item}
+                                />
+                            ))}
+                        </section>
+                    </div>
+                </div>
+            )}
         </main>
     )
 }
