@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getRavelryYarn, addNewStash } from "@utils/helpers"
 import Autocomplete from "@components/Search/Autocomplete"
 import SelectedItem from "@components/Modal/SelectedItem"
-import StashCollapse from "@components/Collapse/StashCollapse"
+import StashCard from "@components/Card/StashCard"
 import SearchText from "@components/Text/SearchText"
 
 export default function Stash() {
@@ -80,8 +80,8 @@ export default function Stash() {
 
     return (
         <main>
-            <div className="h-max-content w-max-content rounded-lg bg-gradient-to-r from-accent via-secondary to-error p-1 my-6 md:mx-10">
-                <div className="bg-primary mx-1 my-1 rounded-lg">
+            <div className="section-border">
+                <div className="section-content">
                     <SearchText />
                     <Autocomplete
                         items={items}
@@ -98,9 +98,19 @@ export default function Stash() {
                     />
                 </div>
             </div>
-            <StashCollapse
-                stash={stash}
-            />
+            {stash && stash.length > 0 && (
+                <div className="section-border">
+                    <div className="section-content">
+                        <section className="w-max mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center justify-center gap-y-20 gap-x-14">
+                            {stash.map((item) => (
+                                <StashCard
+                                    item={item}
+                                />
+                            ))}
+                        </section>
+                    </div>
+                </div>
+            )}
         </main>
     )
 }

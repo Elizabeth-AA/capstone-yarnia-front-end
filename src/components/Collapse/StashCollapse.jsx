@@ -8,7 +8,7 @@ const StashCollapse = ({ stash }) => {
     }
 
     return (
-        <div className="section flex justify-center flex-col flex-wrap md:flex-row">
+        <div className="flex justify-center flex-col flex-wrap md:flex-row">
         {stash.map((item) => (
         <div
             tabIndex={0}

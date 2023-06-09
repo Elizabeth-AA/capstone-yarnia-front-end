@@ -18,10 +18,17 @@
 }
 
 @layer components {
-  .section {
+  /* .section {
     @apply my-8 md:mx-8 xl:mx-auto xl:max-w-7xl rounded-lg 
+  } */
+
+  .section-border {
+    @apply max-h-full max-w-full rounded-lg bg-gradient-to-r from-accent via-secondary to-error p-1 my-6 md:mx-10
   }
 
+  .section-content {
+    @apply bg-primary m-1 rounded-lg
+  }
   /* .bg-gradient {
     @apply absolute -inset-1 rounded-lg bg-gradient-to-tr from-primary via-accent to-secondary opacity-75
   } */
@@ -47,7 +54,7 @@
   }
 
   .btn-tip {
-    @apply tooltip tooltip-accent w-12 h-12
+    @apply tooltip tooltip-accent w-12 h-12 mb-1
   }
 
   .tooltip:before {
