@@ -101,7 +101,7 @@ export default function Stash() {
             {stash && stash.length > 0 && (
                 <div className="section-border">
                     <div className="section-content">
-                        <section className="w-max mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center justify-center gap-y-20 gap-x-14">
+                        <section className="w-full mx-auto flex flex-wrap justify-center">
                             {stash.map((item) => (
                                 <StashCard
                                     item={item}

@@ -37,8 +37,24 @@
     @apply font-serif text-secondary lowercase tracking-wide text-[2.5rem] leading-9 md:leading-[2.75rem] md:text-[2.75rem] lg:text-[3rem]
   }
 
-  .card-header {
+  /* .card-header {
     @apply font-serif text-secondary text-xl md:text-2xl lg:text-3xl pt-2 md:pt-0 tracking-wider
+  } */
+
+  .card {
+    @apply relative w-max md:w-full m-2 bg-base-100 shadow-md rounded-lg duration-300 hover:scale-105 hover:shadow-xl md:card-side
+  }
+
+  .card__subheader {
+    @apply font-sans text-xs md:text-sm uppercase
+  }
+
+  .card__header {
+    @apply text-lg md:text-2xl font-bold text-secondary truncate block capitalize pb-4
+  }
+
+  .card__details {
+    @apply font-sans text-base md:text-lg cursor-auto my-2 mx-4 even:text-accent-content
   }
 
   .subheader {
@@ -46,7 +62,7 @@
   }
 
   .body-text {
-    @apply font-sans text-sm md:text-lg pb-4 text-base-content
+    @apply font-sans text-sm md:text-lg pb-2
   }
 
   .btn-text {
@@ -54,10 +70,14 @@
   }
 
   .btn-tip {
-    @apply tooltip tooltip-accent w-12 h-12 mb-1
+    @apply tooltip tooltip-left tooltip-accent absolute bottom-0 right-0
   }
 
-  .tooltip:before {
+  /* .tooltip:before {
     @apply w-min px-1
+  } */
+
+  .icon {
+    @apply border-4 border-solid border-accent rounded-lg w-11 h-11
   }
 }

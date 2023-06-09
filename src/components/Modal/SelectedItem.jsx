@@ -16,17 +16,17 @@ const SelectedItem = ({ selectedItem, addToStash, handleClose, handleClick }) =>
                         <p className="body-text pb-4 md:pl-4">{selectedItem.yarn_weight.name} - {selectedItem.yardage} yds</p>
                         <div className="flex items-baseline justify-between flex-wrap md:mx-4 md:mt-2">
                             <div className="btn-tip" data-tip="close">
-                                <button onClick={() => { handleClose() }}><img src={close} className="border-4 solid border-accent rounded-lg" /></button>
+                                <button onClick={() => { handleClose() }}><img src={close} className="icon" /></button>
                             </div>
                             <div className="btn-tip" data-tip="add to stash">
-                                <button onClick={() => { handleClick(); addToStash(selectedItem); handleClose() }} className="md:w-full md:mb-4"><img src={stash} className="border-4 solid border-accent rounded-lg" /></button>
+                                <button onClick={() => { handleClick(); addToStash(selectedItem); handleClose() }} className="md:w-full md:mb-4"><img src={stash} className="icon" /></button>
                             </div>
                             <div className="btn-tip" data-tip="view on ravelry">
                                 <a
                                     href={`https://www.ravelry.com/yarns/library/${selectedItem.permalink}`}
                                     target="_blank"
                                 >
-                                    <img src={rav_direct} className="border-4 solid border-accent rounded-lg" />
+                                    <img src={rav_direct} className="icon" />
                                 </a>
                             </div>
                         </div>
