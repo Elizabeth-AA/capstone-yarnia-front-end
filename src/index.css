@@ -42,7 +42,7 @@
   } */
 
   .card {
-    @apply relative w-max md:w-full m-2 bg-base-100 shadow-md rounded-lg duration-300 hover:scale-105 hover:shadow-xl md:card-side
+    @apply relative w-max md:w-full mx-4 mt-4 bg-base-100 shadow-md rounded-lg duration-300 hover:scale-105 hover:shadow-xl md:card-side last:mb-4
   }
 
   .card__subheader {
@@ -50,7 +50,7 @@
   }
 
   .card__header {
-    @apply text-lg md:text-2xl font-bold text-secondary truncate block capitalize pb-4
+    @apply text-lg md:text-2xl font-bold text-secondary truncate block capitalize pb-3
   }
 
   .card__details {
@@ -70,7 +70,7 @@
   }
 
   .btn-tip {
-    @apply tooltip tooltip-left tooltip-accent absolute bottom-0 right-0
+    @apply tooltip tooltip-left tooltip-accent
   }
 
   /* .tooltip:before {
