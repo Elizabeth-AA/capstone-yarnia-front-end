@@ -21,11 +21,15 @@ export default function Stash() {
                 yarn_company: item.yarn_company_name,
                 yarn_weight: item.yarn_weight,
                 yardage: item.yardage,
+                grams: item.grams,
+                machine_washable: item.machine_washable,
+                texture: item.texture,
                 photo: item.first_photo,
                 permalink: item.permalink,
                 searchTerm: item.name,
             }))
             setItems(searchResults)
+            console.log(searchResults)
         } catch (error) {
             console.error(error)
         }
@@ -64,6 +68,9 @@ export default function Stash() {
                 yarn_company: item.yarn_company,
                 yarn_weight: item.yarn_weight,
                 yardage: item.yardage,
+                grams: item.grams,
+                machine_washable: item.machine_washable,
+                texture: item.texture,
                 photo: item.photo,
                 permalink: item.permalink,
             }

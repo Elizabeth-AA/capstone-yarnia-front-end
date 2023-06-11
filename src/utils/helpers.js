@@ -3,7 +3,7 @@ import routes from '@services/routes.json'
 
 export async function getRavelryYarn(searchTerm) {
     try {
-      const response = await ravInstance.get(`yarns/search.json?query=${searchTerm}`);
+      const response = await ravInstance.get(`yarns/search.json?query=${searchTerm}&page_size=10`);
       if (response.status === 200) {
         return response.data;
       }
