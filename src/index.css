@@ -54,7 +54,7 @@
   }
 
   .card__details {
-    @apply font-sans text-base md:text-lg cursor-auto my-2 mx-4 even:text-accent-content
+    @apply font-sans text-base md:text-lg cursor-auto my-1 mx-4 even:text-accent-content
   }
 
   .subheader {
