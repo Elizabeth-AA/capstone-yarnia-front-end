@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import YarnCardContents from '@components/Card/YarnCardContents'
 import projects_direct from '@assets/icons/yarnia-projects.png'
 
 export default function StashCard({ item }) {
