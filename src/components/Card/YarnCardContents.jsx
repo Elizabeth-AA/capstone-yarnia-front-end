@@ -22,7 +22,7 @@ export default function YarnCardContents({ item }) {
         alt="skein of yarn"
         className="h-40 w-44 rounded-t-lg object-cover md:h-64 md:w-48 md:rounded-l-lg md:rounded-tr-none"
         />
-        <div className="relative w-44 md:w-full px-4 py-3">
+        <div className="relative w-44 md:max-w-screen-md px-4 py-3">
             <span tabIndex={0} className="card__subheader">
             {item.yarn_company}
             </span>
