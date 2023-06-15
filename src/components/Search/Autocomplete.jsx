@@ -25,7 +25,7 @@ const Autocomplete = ({ items, search, onChange, value, onSelect }) => {
                     onChange={handleInputChange}
                     onFocus={handleInputFocus}
                     onBlur={handleInputFocus}
-                    placeholder="Search for yarn by name"
+                    placeholder="Search"
                 />
                 <div className="dropdown-content bg-neutral top-14 max-h-96 overflow-auto flex-col rounded-md md:text-lg lg:text-xl">
                     <div 
