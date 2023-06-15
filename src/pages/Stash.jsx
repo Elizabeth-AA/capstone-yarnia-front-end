@@ -29,7 +29,6 @@ export default function Stash() {
                 searchTerm: item.name,
             }))
             setItems(searchResults)
-            console.log(searchResults)
         } catch (error) {
             console.error(error)
         }

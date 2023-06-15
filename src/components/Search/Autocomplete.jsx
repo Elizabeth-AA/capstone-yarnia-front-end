@@ -1,9 +1,11 @@
 import { memo, useRef, useState } from "react"
+import SearchInput from "./SearchInput";
 
 const Autocomplete = ({ items, search, onChange, value, onSelect }) => {
     
     const ref = useRef(null);
     const [open, setOpen] = useState(false);
+    const [inputFocused, setInputFocused] = useState(false);
 
     const handleInputChange = (event) => {
         const value = event.target.value
@@ -11,16 +13,19 @@ const Autocomplete = ({ items, search, onChange, value, onSelect }) => {
         search(value)
     }
 
+    const handleInputFocus = () => {
+        setInputFocused(!inputFocused);
+    }
+
     return (
         <div className="flex justify-center">
             <div className={`dropdown w-9/12 ${open ? 'dropdown-open' : ''}`} ref={ref}>
-                <input
-                    type="text"
-                    className="bg-accent placeholder-base-content input input-bordered w-full mb-6 md:text-lg lg:text-xl"
+                <SearchInput
                     value={value}
                     onChange={handleInputChange}
-                    placeholder="Search for yarn by name"
-                    tabIndex={0}
+                    onFocus={handleInputFocus}
+                    onBlur={handleInputFocus}
+                    placeholder="Search"
                 />
                 <div className="dropdown-content bg-neutral top-14 max-h-96 overflow-auto flex-col rounded-md md:text-lg lg:text-xl">
                     <div 
