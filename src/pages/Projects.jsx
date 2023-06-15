@@ -45,8 +45,10 @@ export default function Projects() {
     return (
         <main>
             <YarnHero item={item} />
-            <div className="bg-primary">
-                <h2 className="page-header text-center text-2xl md:text-3xl lg:text-4xl pt-6 pb-4">browse projects that use this yarn</h2>
+            <div className="section-border mx-4">
+                <div className="section-content">
+                <h2 className="page-header text-center text-2xl md:text-3xl lg:text-4xl py-6 mb-4">browse projects that use this yarn</h2>
+                </div>
                 <ProjectCarousel searchResults={searchResults} />
             </div>
         </main>
