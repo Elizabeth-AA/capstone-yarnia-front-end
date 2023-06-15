@@ -1,3 +1,4 @@
+import { InformationCircleIcon } from '@heroicons/react/24/outline'
 export default function ProjectCarousel({ searchResults }) {
   const patternCategories = ['clothing', 'accessories', 'home', 'toys and hobbies']
 
@@ -20,9 +21,9 @@ export default function ProjectCarousel({ searchResults }) {
                   <a
                     href={`https://www.ravelry.com/projects/${project.user.username}/${project.permalink}`}
                     target="_blank"
-                    className="btn btn-xs absolute right-0"
+                    className="absolute right-0"
                   >
-                    view
+                    <InformationCircleIcon className="icon text-base-content hover:text-primary" />
                   </a>
                 </div>
               ))
