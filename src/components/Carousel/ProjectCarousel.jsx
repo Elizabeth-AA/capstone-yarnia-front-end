@@ -3,13 +3,13 @@ export default function ProjectCarousel({ searchResults }) {
   const patternCategories = ['clothing', 'accessories', 'home', 'toys and hobbies']
 
   return (
-    <div className="section bg-base-200 rounded">
+    <div className="section-border mt-2 mx-1">
       {patternCategories.map((category) => {
         const categoryProjects = searchResults.filter((project) => project.category === category)
         return (
-          <div key={category} className="p-4">
-            <h3 className="card-header text-accent text-xl md:text-2xl lg:text-3xl capitalize pb-2">{category}</h3>
-            <div className="carousel carousel-start relative p-4 space-x-2 bg-neutral rounded-box">
+          <div key={category} className="section-content bg-neutral mb-4 last:mb-2">
+            <h3 className="card-header text-accent-content ml-2 pt-2 text-xl md:text-2xl lg:text-3xl capitalize pb-2">{category}</h3>
+            <div className="carousel carousel-start relative pt-2 pb-6 px-4 space-x-4 rounded-box">
             {categoryProjects.length > 0 ? (
               categoryProjects.map((project, index) => (
                 <div
@@ -17,14 +17,15 @@ export default function ProjectCarousel({ searchResults }) {
                   id={`${category}_slide${index}`}
                   key={`${category}-${index}`}
                 >
-                  <img className="rounded-box h-40 md:h-48 lg:h-56" src={project.photo.small_url} />
+                  <img className="rounded-box h-48 md:h-56 lg:h-64" src={project.photo.small_url} />
+                  <div className="btn-tip absolute right-0" data-tip="view on ravelry">
                   <a
                     href={`https://www.ravelry.com/projects/${project.user.username}/${project.permalink}`}
                     target="_blank"
-                    className="absolute right-0"
                   >
-                    <InformationCircleIcon className="icon text-base-content hover:text-primary" />
+                    <InformationCircleIcon className="icon text-base-content hover:text-accent" />
                   </a>
+                  </div>
                 </div>
               ))
             ) : (
