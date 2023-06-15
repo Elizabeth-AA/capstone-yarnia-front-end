@@ -54,7 +54,7 @@
   }
 
   .card__details {
-    @apply font-sans text-base md:text-lg cursor-auto my-1 mx-4 even:text-accent-content
+    @apply font-sans text-base md:text-lg cursor-auto my-1 mx-4 even:text-secondary lowercase
   }
 
   .subheader {
@@ -78,6 +78,6 @@
   } */
 
   .icon {
-    @apply h-6 w-6 text-neutral-content
+    @apply h-6 w-6 text-accent-content hover:text-accent md:h-7 md:w-7
   }
 }
