@@ -2,7 +2,7 @@ import { useState } from "react"
 import { SignUpFields } from '@components/Login/FormField'
 import AuthInput from "@components/Login/AuthInput"
 import AuthBtn from '@components/Login/AuthBtn'
-import AuthHeader from "./AuthHeader"
+import AuthHeader from "@components/Login/AuthHeader"
 // import { signup } from '@utils/helpers.js'
 
 export default function RegisterForm() {

@@ -17,8 +17,8 @@ export default function AuthTabs() {
             {tab}
           </button>
         ))}
-        <div className={`card ${activeTab !== 0 ? "hidden" : ""}`}><AuthForm /></div>
-        <div className={`card ${activeTab !== 1 ? "hidden" : ""}`}><RegisterForm /></div>
+        <div className={`section-content ${activeTab !== 0 ? "hidden" : ""}`}><AuthForm /></div>
+        <div className={`section-content ${activeTab !== 1 ? "hidden" : ""}`}><RegisterForm /></div>
       </div>
     );
 }
