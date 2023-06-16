@@ -9,7 +9,7 @@ export default function ProjectCarousel({ searchResults }) {
         return (
           <div key={category} className="section-content bg-neutral mb-4 last:mb-2 opacity-80 hover:opacity-100">
             <h3 className="card-header text-accent-content ml-3 pt-3 text-xl md:text-2xl lg:text-3xl capitalize pb-2">{category}</h3>
-            <div className="carousel carousel-start relative pt-2 pb-6 px-4 space-x-4 rounded-box">
+            <div className="carousel carousel-end relative pt-2 pb-6 px-4 space-x-4 rounded-box">
             {categoryProjects.length > 0 ? (
               categoryProjects.map((project, index) => (
                 <div
@@ -29,7 +29,7 @@ export default function ProjectCarousel({ searchResults }) {
                 </div>
               ))
             ) : (
-              <p className="text-error font-semibold text-lg md:text-lg">no projects for this category</p>
+              <p className="text-error brightness-200 font-semibold text-lg md:text-lg">no projects for this category</p>
             )}
             </div>
           </div>

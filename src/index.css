@@ -80,4 +80,21 @@
   .icon {
     @apply h-6 w-6 text-accent-content hover:text-accent md:h-7 md:w-7
   }
+  
+  .carousel-inner {
+    @apply flex justify-between
+  }
+  
+  .btn-prev,
+  .btn-next {
+    @apply absolute bottom-0
+  }
+  
+  .btn-prev {
+    @apply left-0
+  }
+  
+  .btn-next {
+    @apply right-0
+  }
 }
