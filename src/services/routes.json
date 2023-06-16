@@ -1,4 +1,6 @@
 {
+    "login": "/api/login",
+    "signup": "/api/signup",
     "users": "/api/users",
     "projects": "/api/yarn"
 }

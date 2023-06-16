@@ -3,7 +3,7 @@ import { SignUpFields } from '@components/Login/FormField'
 import AuthInput from "@components/Login/AuthInput"
 import AuthBtn from '@components/Login/AuthBtn'
 import AuthHeader from "@components/Login/AuthHeader"
-// import { signup } from '@utils/helpers.js'
+import { addUser } from '@utils/helpers'
 
 export default function RegisterForm() {
     const [signupFields, setSignupFields] = useState(SignUpFields)
@@ -26,7 +26,7 @@ export default function RegisterForm() {
         for (let i = 0; i < signupFields.length; i++) {
           data[signupFields[i].id] = signupFields[i].value;
         }
-        await signup(data)
+        await addUser(data)
     }
 
     return (

@@ -1,5 +1,5 @@
 import { useState } from "react"
-// import { login } from '@utils/helpers'
+import { authUser } from "@utils/helpers"
 import { LogInFields } from '@components/Login/FormField'
 import AuthInput from '@components/Login/AuthInput'
 import AuthBtn from "@components/Login/AuthBtn"
@@ -27,7 +27,7 @@ export default function AuthForm() {
       const email = loginFields.find(field => field.name === 'email').value
       const password = loginFields.find(field => field.name === 'password').value
       const data = { email, password }
-      return login(data)
+      await authUser(data)
     }
 
     return (

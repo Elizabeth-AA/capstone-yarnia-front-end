@@ -1,6 +1,28 @@
 import { ravInstance, apiInstance } from '@services/axios'
 import routes from '@services/routes.json'
 
+export async function addUser(data) {
+  try {
+    const response = await apiInstance.post(routes.signup, JSON.stringify(data))
+    if (response.status === 201) {
+      return response
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+export async function authUser(data) {
+  try {
+    const response = await apiInstance.post(routes.login, data)
+    if (response.status === 201) {
+      return response
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 export async function getRavelryYarn(searchTerm) {
     try {
       const response = await ravInstance.get(`yarns/search.json?query=${searchTerm}&page_size=10`);
