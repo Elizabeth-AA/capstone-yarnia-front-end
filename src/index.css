@@ -42,7 +42,7 @@
   } */
 
   .card {
-    @apply relative w-max md:w-full mx-4 mt-4 bg-base-100 shadow-md rounded-lg duration-300 hover:scale-105 hover:shadow-xl md:card-side last:mb-4
+    @apply relative w-max md:max-w-full mx-4 mt-4 bg-base-100 shadow-md rounded-lg duration-300 hover:scale-105 hover:shadow-xl md:card-side last:mb-4
   }
 
   .card__subheader {
@@ -79,5 +79,22 @@
 
   .icon {
     @apply h-6 w-6 text-accent-content hover:text-accent md:h-7 md:w-7
+  }
+  
+  .carousel-inner {
+    @apply flex justify-between
+  }
+  
+  .btn-prev,
+  .btn-next {
+    @apply absolute bottom-0
+  }
+  
+  .btn-prev {
+    @apply left-0
+  }
+  
+  .btn-next {
+    @apply right-0
   }
 }

@@ -1,14 +1,15 @@
+import { InformationCircleIcon } from '@heroicons/react/24/outline'
 export default function ProjectCarousel({ searchResults }) {
   const patternCategories = ['clothing', 'accessories', 'home', 'toys and hobbies']
 
   return (
-    <div className="section bg-base-200 rounded">
+    <div className="mt-2">
       {patternCategories.map((category) => {
         const categoryProjects = searchResults.filter((project) => project.category === category)
         return (
-          <div key={category} className="p-4">
-            <h3 className="card-header text-accent text-xl md:text-2xl lg:text-3xl capitalize pb-2">{category}</h3>
-            <div className="carousel carousel-start relative p-4 space-x-2 bg-neutral rounded-box">
+          <div key={category} className="section-content bg-neutral mb-4 last:mb-2 opacity-80 hover:opacity-100">
+            <h3 className="card-header text-accent-content ml-3 pt-3 text-xl md:text-2xl lg:text-3xl capitalize pb-2">{category}</h3>
+            <div className="carousel carousel-end relative pt-2 pb-6 px-4 space-x-4 rounded-box">
             {categoryProjects.length > 0 ? (
               categoryProjects.map((project, index) => (
                 <div
@@ -16,18 +17,19 @@ export default function ProjectCarousel({ searchResults }) {
                   id={`${category}_slide${index}`}
                   key={`${category}-${index}`}
                 >
-                  <img className="rounded-box h-40 md:h-48 lg:h-56" src={project.photo.small_url} />
+                  <img className="hover:scale-105 rounded-box h-48 md:h-56 lg:h-64" src={project.photo.small_url} />
+                  <div className="btn-tip absolute right-0" data-tip="view on ravelry">
                   <a
                     href={`https://www.ravelry.com/projects/${project.user.username}/${project.permalink}`}
                     target="_blank"
-                    className="btn btn-xs absolute right-0"
                   >
-                    view
+                    <InformationCircleIcon className="icon text-base-content hover:text-accent" />
                   </a>
+                  </div>
                 </div>
               ))
             ) : (
-              <p className="text-error font-semibold text-lg md:text-lg">no projects for this category</p>
+              <p className="text-error brightness-200 font-semibold text-lg md:text-lg">no projects for this category</p>
             )}
             </div>
           </div>

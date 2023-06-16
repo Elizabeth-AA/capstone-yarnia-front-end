@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { LightBulbIcon } from '@heroicons/react/24/outline'
-import YarnCardContents from '@components/Card/YarnCardContents'
+import YarnCard from '@components/Card/YarnCard'
 
 export default function StashCard({ item }) {
   const navigate = useNavigate()
@@ -11,7 +11,7 @@ export default function StashCard({ item }) {
 
   return (
     <div tabIndex={0} className="card" key={item.rav_id}>
-      <YarnCardContents item={item} />
+      <YarnCard item={item} />
       <div className="absolute bottom-0 right-0 btn-tip" data-tip="see projects">
         <button onClick={() => toProjects(item)}>
           <LightBulbIcon className='icon' />
