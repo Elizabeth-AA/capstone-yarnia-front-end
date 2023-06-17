@@ -14,7 +14,7 @@ export async function addUser(data) {
 
 export async function authUser(data) {
   try {
-    const response = await apiInstance.post(routes.login, data)
+    const response = await apiInstance.post(routes.login, JSON.stringify(data))
     if (response.status === 201) {
       return response
     }
