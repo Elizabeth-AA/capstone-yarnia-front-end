@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { LightBulbIcon } from '@heroicons/react/24/outline'
-import YarnCard from '@components/Card/YarnCard'
+import YarnCard from '@components/Cards/YarnCard'
 
 export default function StashCard({ item }) {
   const navigate = useNavigate()

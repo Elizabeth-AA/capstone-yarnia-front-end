@@ -1,6 +1,6 @@
 import { useState } from "react"
 import NavItem from "@components/Header/NavItem"
-import NavLinks from './links.json'
+import NavLinks from '@components/Header/links.json'
 import logo from '@assets/icons/yarnia-icon.png'
 
 export default function Header() {

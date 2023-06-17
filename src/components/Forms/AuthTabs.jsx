@@ -1,6 +1,6 @@
 import { useState } from "react"
-import AuthForm from "./AuthForm";
-import RegisterForm from './RegisterForm'
+import AuthForm from "@components/Forms/AuthForm";
+import RegisterForm from '@components/Forms/RegisterForm'
 
 export default function AuthTabs() {
     const tabs = ["Login", "Signup"];

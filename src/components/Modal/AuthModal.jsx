@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import AuthTabs from './AuthTabs'
+import AuthTabs from '@components/Forms/AuthTabs'
 
 export default function AuthModal() {
   const [isModalOpen, setIsModalOpen] = useState(false)

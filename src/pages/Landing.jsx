@@ -1,5 +1,5 @@
 import LandingHero from "@components/Hero/LandingHero"
-import AuthModal from "@components/Login/AuthModal"
+import AuthModal from "@components/Modal/AuthModal"
 import AboutText from "@components/Text/AboutText"
 
 export default function Landing() {

@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { authUser } from "@utils/helpers"
-import { LogInFields } from '@components/Login/FormField'
+import { LogInFields } from '@components/Login/FormFields'
 import AuthInput from '@components/Login/AuthInput'
-import AuthBtn from "@components/Login/AuthBtn"
+import AuthBtn from "@components/Buttons/AuthBtn"
 import AuthHeader from "@components/Login/AuthHeader"
 
 export default function AuthForm() {

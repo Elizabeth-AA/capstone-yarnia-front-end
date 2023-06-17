@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { SignUpFields } from '@components/Login/FormField'
 import AuthInput from "@components/Login/AuthInput"
-import AuthBtn from '@components/Login/AuthBtn'
+import AuthBtn from '@components/Buttons/AuthBtn'
 import AuthHeader from "@components/Login/AuthHeader"
 import { addUser } from '@utils/helpers'
 
