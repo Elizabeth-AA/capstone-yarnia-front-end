@@ -143,6 +143,7 @@ node_modules/
 jspm_packages/
 *-lock.json
 *.lock
+jsconfig.json
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/

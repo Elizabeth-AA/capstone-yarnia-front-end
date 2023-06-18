@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getRavelryYarn, addNewStash } from "@utils/helpers"
 import Autocomplete from "@components/Search/Autocomplete"
 import SelectedItem from "@components/Modal/SelectedItem"
-import StashCard from "@components/Card/StashCard"
+import StashCard from "@components/Cards/StashCard"
 import SearchText from "@components/Text/SearchText"
 
 export default function Stash() {

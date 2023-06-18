@@ -1,6 +1,5 @@
 import { useState } from "react"
 import AuthForm from "@components/Forms/AuthForm";
-import RegisterForm from '@components/Forms/RegisterForm'
 
 export default function AuthTabs() {
     const tabs = ["Login", "Signup"];
@@ -17,8 +16,8 @@ export default function AuthTabs() {
             {tab}
           </button>
         ))}
-        <div className={`section-content ${activeTab !== 0 ? "hidden" : ""}`}><AuthForm /></div>
-        <div className={`section-content ${activeTab !== 1 ? "hidden" : ""}`}><RegisterForm /></div>
+        <div className={`section-content ${activeTab !== 0 ? "hidden" : ""}`}><AuthForm formType="login" /></div>
+        <div className={`section-content ${activeTab !== 1 ? "hidden" : ""}`}><AuthForm formType="signup" /></div>
       </div>
     );
 }
