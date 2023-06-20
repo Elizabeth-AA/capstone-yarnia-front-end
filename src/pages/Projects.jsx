@@ -38,9 +38,9 @@ export default function Projects() {
     }
   }
 
-  useEffect(() => {
-    projectSearch()
-  }, [])
+//   useEffect(() => {
+//     projectSearch()
+//   }, [])
 
   return (
     <main>

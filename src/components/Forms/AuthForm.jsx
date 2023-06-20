@@ -31,7 +31,9 @@ export default function AuthForm({ formType }) {
           console.log(response)
         }
       } else if (formType === "signup") {
-        await createUser()
+        const user = await createUser()
+        // localStorage.setItem('token', token)
+        // localStorage.setItem('user', JSON.stringify(user))
       }
   }
 
@@ -39,16 +41,32 @@ export default function AuthForm({ formType }) {
     const email = fields.find(field => field.name === 'email').value
     const password = fields.find(field => field.name === 'password').value
     const data = { email, password }
-    return await authUser(data)
+
+    try {
+      const response = await authUser(data);
+      if (response && response.status === 201) {
+        const token = response.data.token;
+        const user = response.data.user;
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const createUser = async () => {
-    const data = fields.reduce((acc, field) => {
-      acc[field.id] = field.value;
-      return acc;
-    }, {})
-    await addUser(data)
+    try {
+      const data = {
+        username: fields.find((field) => field.name === 'username').value,
+        email_address: fields.find((field) => field.name === 'email').value,
+        password: fields.find((field) => field.name === 'password').value
+      }
+      await addUser(data)
+  } catch (e) {
+    console.log(e)
   }
+}
 
     return (
       <>

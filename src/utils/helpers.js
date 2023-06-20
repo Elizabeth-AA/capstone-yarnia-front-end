@@ -3,40 +3,58 @@ import routes from '@services/routes.json'
 
 export async function addUser(data) {
   try {
-    const response = await apiInstance.post(routes.signup, JSON.stringify(data))
-    if (response.status === 201) {
-      return response
-    }
+    console.log(data)
+      const response = await apiInstance.post(routes.signup, data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      if (response.status === 201) {
+        // const { user, token } = response.data
+        console.log(response)
+        return (response)
+      } else {
+        throw new Error('signup failed')
+      }
   } catch (e) {
-    console.log(e)
+      console.log(e)
+      // return { user: null, token: null }
   }
 }
 
 export async function authUser(data) {
   try {
-    const response = await apiInstance.post(routes.login, JSON.stringify(data))
-    if (response.status === 201) {
+      const response = await apiInstance.post(routes.login, JSON.stringify(data))
+      if (response.status === 201) {
+        const { token } = response.data
+        localStorage.setItem('token', token)
       return response
+      }
+  } catch (e) {
+      console.log(e)
+  }
+}
+
+export async function getRavelryYarn(searchTerm) {
+  try {
+    const response = await ravInstance.get(`yarns/search.json?query=${searchTerm}&page_size=10`);
+    if (response.status === 200) {
+      return response.data;
     }
   } catch (e) {
     console.log(e)
   }
 }
 
-export async function getRavelryYarn(searchTerm) {
-    try {
-      const response = await ravInstance.get(`yarns/search.json?query=${searchTerm}&page_size=10`);
-      if (response.status === 200) {
-        return response.data;
-      }
-    } catch (e) {
-      console.log(e)
-    }
-}
-
 export async function addNewStash(data) {
   try {
-    const response = await apiInstance.post(routes.users, JSON.stringify(data))
+    const token = localStorage.getItem('token')
+    const response = await apiInstance.post(routes.users, JSON.stringify(data), {
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+      })
     if (response.status === 201) {
       return response
     }
