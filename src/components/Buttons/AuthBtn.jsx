@@ -3,7 +3,9 @@ export default function AuthBtn({
     type='Button',
     action='submit',
     text,
-    isActive
+    isActive,
+    clearFields,
+    closeModal
 }) {
     return (
         <>
@@ -15,7 +17,11 @@ export default function AuthBtn({
                     isActive ? 'disabled:text-error disabled:bg-neutral' : ''
                   }`}
                 disabled={isActive}
-                onClick={handleSubmit}
+                onClick={() => {
+                    handleSubmit()
+                    clearFields()
+                    closeModal()
+                  }}
             >
 
                 {text}

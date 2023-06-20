@@ -5,7 +5,7 @@ import AuthInput from '@components/Input/AuthInput'
 import AuthBtn from "@components/Buttons/AuthBtn"
 import AuthHeader from "@components/Login/AuthHeader"
 
-export default function AuthForm({ formType }) {
+export default function AuthForm({ formType, closeModal }) {
 
   const formFields = formType === "login" ? LogInFields : SignUpFields; 
 
@@ -23,17 +23,26 @@ export default function AuthForm({ formType }) {
 
   const isFormValid = !fields.some(field => field.value === "");
 
+  const clearFields = () => {
+    setFields(prevFields =>
+      prevFields.map(field => ({ ...field, value: '' }))
+    );
+  };
+
   const handleSubmit = async (e) => {
-      e.preventDefault();
+      // e.preventDefault();
       if (formType === "login") {
         const response = await authenticateUser();
         if (response && response.status === 201) {
-          console.log(response)
+          clearFields()
+          closeModal()
         }
       } else if (formType === "signup") {
         const user = await createUser()
         // localStorage.setItem('token', token)
         // localStorage.setItem('user', JSON.stringify(user))
+        clearFields()
+        closeModal()
       }
   }
 
@@ -91,7 +100,7 @@ export default function AuthForm({ formType }) {
             </div>
           )}
         </div>
-        <AuthBtn handleSubmit={handleSubmit} isActive={!isFormValid} text={formType === "login" ? "Login" : "Signup"} />
+        <AuthBtn handleSubmit={handleSubmit} isActive={!isFormValid} text={formType === "login" ? "Login" : "Signup"} clearFields={clearFields} closeModal={closeModal} />
       </>
     )
 }
