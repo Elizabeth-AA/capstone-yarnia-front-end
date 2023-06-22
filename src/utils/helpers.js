@@ -11,20 +11,16 @@ export async function addUser(data) {
       })
 
       if (response.status === 201) {
-        // const { user, token } = response.data
-        console.log(response)
         return (response)
       } else {
         throw new Error('signup failed')
       }
   } catch (e) {
       console.log(e)
-      // return { user: null, token: null }
   }
 }
 
 export async function authUser(data) {
-  console.log(data)
   try {
       const token = localStorage.getItem('token')
       const response = await apiInstance.post(routes.login, data, {
@@ -33,19 +29,12 @@ export async function authUser(data) {
           Authorization: `Bearer ${token}`
         },
       })
-      console.log(response)
       if (response.status === 201) {
-        console.log(response)
-        // const { token } = response.data
-        // console.log(token)
-        // localStorage.setItem('token', token)
       return response
       } else {
         throw new Error('login failed')
       }
-      // return response
   } catch (e) {
-      console.log(e)
       throw e
   }
 }
