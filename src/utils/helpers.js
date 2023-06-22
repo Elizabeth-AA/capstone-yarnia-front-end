@@ -63,7 +63,23 @@ export async function addNewStash(userId, data) {
       return response
     }
   } catch (e) {
-    console.log(e)
+    console.error(e)
+  }
+}
+
+export async function getStash(userId) {
+  try {
+    const token = localStorage.getItem('token')
+    const response = await apiInstance.get(`api/user/${userId}`, {
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+      })
+    if (response.status === 200) {
+      return response
+    }
+  } catch (e) {
+    console.error(e)
   }
 }
 

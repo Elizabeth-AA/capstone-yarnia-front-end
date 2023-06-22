@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getRavelryYarn, addNewStash } from "@utils/helpers"
+import { getRavelryYarn, addNewStash, getStash } from "@utils/helpers"
 import Autocomplete from "@components/Search/Autocomplete"
 import SelectedItem from "@components/Modal/SelectedItem"
 import StashCard from "@components/Cards/StashCard"
@@ -36,6 +36,19 @@ export default function Stash() {
         }
     }
 
+    const fetchStash = async () => {
+        try {
+            const response = await getStash(userId)
+            if (response && response.status === 200) {
+                setStash(response.data)
+            } else {
+                console.error("failed to fetch stash")
+            }
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     useEffect(() => {
         if (searchTerm) {
             search(searchTerm)
@@ -43,7 +56,8 @@ export default function Stash() {
             setItems([])
             setSelectedItem(null)
         }
-    }, [searchTerm])
+        fetchStash()
+    }, [userId, searchTerm])
     
     const handleSelectItem = (item) => {
         setSelectedItem(item)
