@@ -38,7 +38,7 @@ export default function AuthForm({ formType, closeModal }) {
 
         clearFields()
         closeModal()
-        navigate(`/users/${userId}`)
+        navigate(`/user/${userId}`)
       }
     } else if (formType === 'signup') {
       const response = await createUser()
@@ -47,7 +47,7 @@ export default function AuthForm({ formType, closeModal }) {
         localStorage.setItem('token', token)
         clearFields()
         closeModal()
-        navigate(`/users/${userId}`)
+        navigate(`/user/${userId}`)
       }
     }
   }

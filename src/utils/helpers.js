@@ -3,7 +3,6 @@ import routes from '@services/routes.json'
 
 export async function addUser(data) {
   try {
-    console.log(data)
       const response = await apiInstance.post(routes.signup, data, {
         headers: {
           'Content-Type': 'application/json',
@@ -50,14 +49,16 @@ export async function getRavelryYarn(searchTerm) {
   }
 }
 
-export async function addNewStash(data) {
+export async function addNewStash(userId, data) {
+  console.log("stash helper ", data)
   try {
     const token = localStorage.getItem('token')
-    const response = await apiInstance.post(routes.users, JSON.stringify(data), {
+    const response = await apiInstance.post(`api/user/${userId}`, data, {
       headers: {
           Authorization: `Bearer ${token}`,
       },
       })
+      console.log("helper response ", response)
     if (response.status === 201) {
       return response
     }

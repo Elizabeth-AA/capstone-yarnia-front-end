@@ -61,9 +61,10 @@ export default function Stash() {
     }
 
     const addToStash = async (item) => {
+        console.log(userId)
+
         try {
             const data = {
-                user_id: userId,
                 rav_id: item.rav_id,
                 name: item.name,
                 yarn_company: item.yarn_company,
@@ -72,10 +73,15 @@ export default function Stash() {
                 grams: item.grams,
                 machine_washable: item.machine_washable,
                 texture: item.texture,
-                photo: item.photo,
+                photo: {
+                    small_url: item.photo.small_url,
+                    medium_url: item.photo.medium_url
+                  },
                 permalink: item.permalink,
             }
-            const response = await addNewStash(data)
+            console.log("stash data ", data)
+            const response = await addNewStash(userId, data)
+            console.log("stash response ", response)
             if (response && response.status === 201) {
                 setStash([...stash, data])
             } else {
@@ -112,6 +118,7 @@ export default function Stash() {
                         <section className="w-full mx-auto flex flex-wrap justify-center">
                             {stash.map((item) => (
                                 <StashCard
+                                    key={item.rav_id}
                                     item={item}
                                 />
                             ))}

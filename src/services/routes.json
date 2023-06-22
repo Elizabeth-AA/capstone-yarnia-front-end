@@ -1,6 +1,6 @@
 {
-    "users": "/api/users",
-    "signup": "/api/users/signup",
-    "login": "/api/users/login",
+    "signup": "/api/user/signup",
+    "login": "/api/user/login",
+    "user": "/api/user/:userId",
     "projects": "/api/yarn"
 }
