@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { apiInstance } from "@/services/axios"
 import { authUser, addUser } from "@utils/helpers"
 import { LogInFields, SignUpFields } from '@components/Input/FormFields'
 import AuthInput from '@components/Input/AuthInput'
@@ -47,18 +48,25 @@ export default function AuthForm({ formType, closeModal }) {
   }
 
   const authenticateUser = async () => {
-    const email = fields.find(field => field.name === 'email').value
-    const password = fields.find(field => field.name === 'password').value
+    const email = fields.find((field) => field.name === 'email').value
+    const password = fields.find((field) => field.name === 'password').value
     const data = { email, password }
+    console.log("authenticateUser ", data)
 
     try {
       const response = await authUser(data);
       if (response && response.status === 201) {
-        const token = response.data.token;
-        const user = response.data.user;
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
+        const { token } = response.data
+        console.log(token)
+        localStorage.setItem('token', token)
+        apiInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`
       }
+      // return response
+        // const token = response.data.token;
+        // const user = response.data.user;
+        // localStorage.setItem('token', token);
+        // localStorage.setItem('user', JSON.stringify(user));
+      // }
     } catch (error) {
       console.log(error);
     }
