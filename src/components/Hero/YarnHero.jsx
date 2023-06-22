@@ -1,4 +1,4 @@
-import HeroCard from "../Card/HeroCard"
+import HeroCard from "@components/Cards/HeroCard"
 
 const YarnHero = ({ item }) => {
     return (

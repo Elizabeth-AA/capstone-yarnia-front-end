@@ -1,5 +1,5 @@
-import YarnCard from "../Card/YarnCard"
-import SelectedItemBtns from "../Buttons/SelectedItemBtns"
+import YarnCard from "@components/Cards/YarnCard"
+import SelectedItemBtns from "@components/Buttons/SelectedItemBtns"
 
 const SelectedItem = ({ selectedItem, addToStash, handleClose, handleClick }) => {
 

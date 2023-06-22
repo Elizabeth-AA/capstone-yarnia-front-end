@@ -1,5 +1,5 @@
 import { memo, useRef, useState } from "react"
-import SearchInput from "./SearchInput";
+import SearchInput from "@components/Input/SearchInput";
 
 const Autocomplete = ({ items, search, onChange, value, onSelect }) => {
     

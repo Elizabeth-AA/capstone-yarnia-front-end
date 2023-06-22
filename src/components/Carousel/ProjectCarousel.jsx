@@ -1,4 +1,5 @@
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
+
 export default function ProjectCarousel({ searchResults }) {
   const patternCategories = ['clothing', 'accessories', 'home', 'toys and hobbies']
 
