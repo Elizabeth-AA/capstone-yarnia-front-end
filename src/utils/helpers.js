@@ -10,7 +10,8 @@ export async function addUser(data) {
       })
 
       if (response.status === 201) {
-        return (response)
+        const { userId } = response.data
+        return { ...response, userId }
       } else {
         throw new Error('signup failed')
       }
@@ -29,7 +30,8 @@ export async function authUser(data) {
         },
       })
       if (response.status === 201) {
-      return response
+        const { userId } = response.data
+        return { ...response, userId }
       } else {
         throw new Error('login failed')
       }

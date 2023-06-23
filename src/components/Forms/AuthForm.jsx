@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { apiInstance } from '@services/axios'
 import { authUser, addUser } from '@utils/helpers'
 import { LogInFields, SignUpFields } from '@components/Input/FormFields'
@@ -7,8 +6,7 @@ import AuthInput from '@components/Input/AuthInput'
 import AuthBtn from '@components/Buttons/AuthBtn'
 import AuthHeader from '@components/Login/AuthHeader'
 
-export default function AuthForm({ formType, closeModal }) {
-  const navigate = useNavigate()
+export default function AuthForm({ formType, closeModal, handleSuccess }) {
 
   const formFields = formType === 'login' ? LogInFields : SignUpFields
 
@@ -35,10 +33,9 @@ export default function AuthForm({ formType, closeModal }) {
       if (response && response.status === 201) {
         const { token, userId } = response.data
         localStorage.setItem('token', token)
-
         clearFields()
         closeModal()
-        navigate(`/user/${userId}`)
+        handleSuccess(userId)
       }
     } else if (formType === 'signup') {
       const response = await createUser()
@@ -47,7 +44,7 @@ export default function AuthForm({ formType, closeModal }) {
         localStorage.setItem('token', token)
         clearFields()
         closeModal()
-        navigate(`/user/${userId}`)
+        handleSuccess(userId)
       }
     }
   }
