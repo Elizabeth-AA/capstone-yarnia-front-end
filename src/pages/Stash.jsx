@@ -43,12 +43,12 @@ console.log("should be false ", errorAlert)
     const fetchStash = async () => {
         try {
             const response = await getStash(userId)
-            if (response && response.status === 200) {
-                setStash(response.data)
-            } else if (response && response.status === 401) {
+            if (response) {
+                setStash(response)
+                console.log("fetch stash ", stash)
+            } else {
                 setErrorAlert(true)
                 console.log("should be true ", errorAlert)
-            } else {
                 console.error("failed to fetch stash")
             }
         } catch (error) {

@@ -9,7 +9,7 @@ export default function AlertInvalidToken() {
     }
 
   return (
-    <div className='toast toast-middle toast-center'>
+    <div className='toast toast-middle toast-center z-50'>
     <div className="alert bg-error shadow-lg w-max">
         <ShieldExclamationIcon className="h-10 w-10 text-error-content md:my-4" />
         <h3 className="card__header text-error-content text-3xl lowercase mx-4">authorization failed</h3>

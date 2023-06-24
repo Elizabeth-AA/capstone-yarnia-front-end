@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import LandingHero from "@components/Hero/LandingHero"
 import AuthModal from "@components/Modal/AuthModal"
 import AboutText from "@components/Text/AboutText"
-import AlertAuthSuccess from '@/components/Alert/AlertAuthSuccess'
+import AlertAuthSuccess from '@components/Alert/AlertAuthSuccess'
 
 export default function Landing() {
   const [showAlert, setShowAlert] = useState(false)

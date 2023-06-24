@@ -19,12 +19,7 @@ export async function addUser(data) {
       console.log(e)
   }
 }
-// , {
-  // headers: {
-    // 'Content-Type': 'application/json',
-    // Authorization: `Bearer ${accessToken}`
-  // },
-// }
+
 export async function authUser(data) {
   try {
     const accessToken = localStorage.getItem('accessToken')
@@ -78,12 +73,16 @@ export async function addNewStash(userId, data) {
 
 export async function getStash(userId) {
   try {
+    console.log("get stash id ", userId)
     const accessToken = localStorage.getItem('accessToken')
+    console.log("get stash token ", accessToken)
     const response = await apiInstance.get(`api/user/${userId}`, {
       headers: {
           Authorization: `Bearer ${accessToken}`,
       },
       })
+      console.log("get stash response ", response)
+      console.log("get stash response data ", response.data)
     if (response.status === 200) {
       return response.data
     } else if (response.status === 401) {

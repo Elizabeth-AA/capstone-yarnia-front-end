@@ -31,9 +31,7 @@ export default function AuthForm({ formType, closeModal, handleSuccess }) {
     if (formType === 'login') {
       const response = await authenticateUser()
       if (response) {
-        console.log("submit response ", response)
         const userId = response.userId
-        console.log("handleSubmit ", userId)
         clearFields()
         closeModal()
         handleSuccess(userId)
@@ -58,8 +56,6 @@ export default function AuthForm({ formType, closeModal, handleSuccess }) {
       const response = await authUser(data)
       if (response) {
         const {accessToken, refreshToken, userId} = response
-        console.log("form response data ", response)
-        console.log("form id ", userId)
         localStorage.setItem('accessToken', accessToken)
         localStorage.setItem('refreshToken', refreshToken)
         apiInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
