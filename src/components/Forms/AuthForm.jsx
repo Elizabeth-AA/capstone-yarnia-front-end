@@ -30,18 +30,18 @@ export default function AuthForm({ formType, closeModal, handleSuccess }) {
   const handleSubmit = async (e) => {
     if (formType === 'login') {
       const response = await authenticateUser()
-      if (response && response.status === 201) {
-        const { token, userId } = response.data
-        localStorage.setItem('token', token)
+      if (response) {
+        console.log("submit response ", response)
+        const userId = response.userId
+        console.log("handleSubmit ", userId)
         clearFields()
         closeModal()
         handleSuccess(userId)
       }
     } else if (formType === 'signup') {
       const response = await createUser()
-      if (response && response.status === 201) {
-        const { token, userId } = response.data
-        localStorage.setItem('token', token)
+      if (response) {
+        const userId = response.userId
         clearFields()
         closeModal()
         handleSuccess(userId)
@@ -53,14 +53,17 @@ export default function AuthForm({ formType, closeModal, handleSuccess }) {
     const email = fields.find((field) => field.name === 'email').value
     const password = fields.find((field) => field.name === 'password').value
     const data = { email, password }
-
+    
     try {
       const response = await authUser(data)
-      if (response && response.status === 201) {
-        const { token } = response.data
-        localStorage.setItem('token', token)
-        apiInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`
-        return response
+      if (response) {
+        const {accessToken, refreshToken, userId} = response
+        console.log("form response data ", response)
+        console.log("form id ", userId)
+        localStorage.setItem('accessToken', accessToken)
+        localStorage.setItem('refreshToken', refreshToken)
+        apiInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
+        return { accessToken, refreshToken, userId }
       }
     } catch (error) {
       console.log(error)

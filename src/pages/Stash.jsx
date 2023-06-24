@@ -5,6 +5,7 @@ import Autocomplete from "@components/Search/Autocomplete"
 import SelectedItem from "@components/Modal/SelectedItem"
 import StashCard from "@components/Cards/StashCard"
 import SearchText from "@components/Text/SearchText"
+import AlertInvalidToken from "@components/Alert/AlertInvalidToken"
 
 export default function Stash() {
     const { userId } = useParams()
@@ -13,6 +14,9 @@ export default function Stash() {
     const [selectedItem, setSelectedItem] = useState(null)
     const [stash, setStash] = useState([])
     const [open, setOpen] = useState(false)
+    const [errorAlert, setErrorAlert] = useState(false)
+
+console.log("should be false ", errorAlert)
 
     const search = async (searchTerm) => {
         try {
@@ -41,6 +45,9 @@ export default function Stash() {
             const response = await getStash(userId)
             if (response && response.status === 200) {
                 setStash(response.data)
+            } else if (response && response.status === 401) {
+                setErrorAlert(true)
+                console.log("should be true ", errorAlert)
             } else {
                 console.error("failed to fetch stash")
             }
@@ -75,8 +82,6 @@ export default function Stash() {
     }
 
     const addToStash = async (item) => {
-        console.log(userId)
-
         try {
             const data = {
                 rav_id: item.rav_id,
@@ -98,9 +103,11 @@ export default function Stash() {
             console.log("stash response ", response)
             if (response && response.status === 201) {
                 setStash([...stash, data])
-            } else {
+            } else if (response && response.status === 401) {
+                setErrorAlert(true)
+            }else {
                 console.error("yarn not added to stash")
-            }
+            }     
         } catch (error) {
             console.error(error)
         }
@@ -108,6 +115,7 @@ export default function Stash() {
 
     return (
         <main>
+            {errorAlert && <AlertInvalidToken />}
             <div className="section-border">
                 <div className="section-content">
                     <SearchText />

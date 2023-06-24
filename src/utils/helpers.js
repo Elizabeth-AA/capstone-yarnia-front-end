@@ -19,19 +19,24 @@ export async function addUser(data) {
       console.log(e)
   }
 }
-
+// , {
+  // headers: {
+    // 'Content-Type': 'application/json',
+    // Authorization: `Bearer ${accessToken}`
+  // },
+// }
 export async function authUser(data) {
   try {
-      const token = localStorage.getItem('token')
+    const accessToken = localStorage.getItem('accessToken')
       const response = await apiInstance.post(routes.login, data, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${accessToken}`
         },
       })
       if (response.status === 201) {
-        const { userId } = response.data
-        return { ...response, userId }
+        const { accessToken, refreshToken, userId } = response.data
+        return { accessToken, refreshToken, userId }
       } else {
         throw new Error('login failed')
       }
@@ -54,16 +59,18 @@ export async function getRavelryYarn(searchTerm) {
 export async function addNewStash(userId, data) {
   console.log("stash helper ", data)
   try {
-    const token = localStorage.getItem('token')
+    const accessToken = localStorage.getItem('accessToken')
     const response = await apiInstance.post(`api/user/${userId}`, data, {
       headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${accessToken}`,
       },
       })
       console.log("helper response ", response)
-    if (response.status === 201) {
-      return response
-    }
+      if (response.status === 200) {
+        return response.data
+      } else if (response.status === 401) {
+        return response.data.message
+      }
   } catch (e) {
     console.error(e)
   }
@@ -71,14 +78,16 @@ export async function addNewStash(userId, data) {
 
 export async function getStash(userId) {
   try {
-    const token = localStorage.getItem('token')
+    const accessToken = localStorage.getItem('accessToken')
     const response = await apiInstance.get(`api/user/${userId}`, {
       headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${accessToken}`,
       },
       })
     if (response.status === 200) {
-      return response
+      return response.data
+    } else if (response.status === 401) {
+      return response.data.message
     }
   } catch (e) {
     console.error(e)
