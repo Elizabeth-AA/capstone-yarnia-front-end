@@ -3,7 +3,6 @@ import routes from '@services/routes.json'
 
 export async function addUser(data) {
   try {
-    console.log(data)
       const response = await apiInstance.post(routes.signup, data, {
         headers: {
           'Content-Type': 'application/json',
@@ -11,7 +10,8 @@ export async function addUser(data) {
       })
 
       if (response.status === 201) {
-        return (response)
+        const { userId } = response.data
+        return { ...response, userId }
       } else {
         throw new Error('signup failed')
       }
@@ -22,15 +22,16 @@ export async function addUser(data) {
 
 export async function authUser(data) {
   try {
-      const token = localStorage.getItem('token')
+    const accessToken = localStorage.getItem('accessToken')
       const response = await apiInstance.post(routes.login, data, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${accessToken}`
         },
       })
       if (response.status === 201) {
-      return response
+        const { accessToken, refreshToken, userId } = response.data
+        return { accessToken, refreshToken, userId }
       } else {
         throw new Error('login failed')
       }
@@ -50,19 +51,45 @@ export async function getRavelryYarn(searchTerm) {
   }
 }
 
-export async function addNewStash(data) {
+export async function addNewStash(userId, data) {
+  console.log("stash helper ", data)
   try {
-    const token = localStorage.getItem('token')
-    const response = await apiInstance.post(routes.users, JSON.stringify(data), {
+    const accessToken = localStorage.getItem('accessToken')
+    const response = await apiInstance.post(`api/user/${userId}`, data, {
       headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${accessToken}`,
       },
       })
-    if (response.status === 201) {
-      return response
+      console.log("helper response ", response)
+      if (response.status === 200) {
+        return response.data
+      } else if (response.status === 401) {
+        return response.data.message
+      }
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+export async function getStash(userId) {
+  try {
+    console.log("get stash id ", userId)
+    const accessToken = localStorage.getItem('accessToken')
+    console.log("get stash token ", accessToken)
+    const response = await apiInstance.get(`api/user/${userId}`, {
+      headers: {
+          Authorization: `Bearer ${accessToken}`,
+      },
+      })
+      console.log("get stash response ", response)
+      console.log("get stash response data ", response.data)
+    if (response.status === 200) {
+      return response.data
+    } else if (response.status === 401) {
+      return response.data.message
     }
   } catch (e) {
-    console.log(e)
+    console.error(e)
   }
 }
 

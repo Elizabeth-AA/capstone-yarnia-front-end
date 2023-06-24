@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getRavelryYarn, addNewStash } from "@utils/helpers"
+import { getRavelryYarn, addNewStash, getStash } from "@utils/helpers"
 import Autocomplete from "@components/Search/Autocomplete"
 import SelectedItem from "@components/Modal/SelectedItem"
 import StashCard from "@components/Cards/StashCard"
 import SearchText from "@components/Text/SearchText"
+import AlertInvalidToken from "@components/Alert/AlertInvalidToken"
 
 export default function Stash() {
     const { userId } = useParams()
@@ -13,6 +14,9 @@ export default function Stash() {
     const [selectedItem, setSelectedItem] = useState(null)
     const [stash, setStash] = useState([])
     const [open, setOpen] = useState(false)
+    const [errorAlert, setErrorAlert] = useState(false)
+
+console.log("should be false ", errorAlert)
 
     const search = async (searchTerm) => {
         try {
@@ -36,6 +40,22 @@ export default function Stash() {
         }
     }
 
+    const fetchStash = async () => {
+        try {
+            const response = await getStash(userId)
+            if (response) {
+                setStash(response)
+                console.log("fetch stash ", stash)
+            } else {
+                setErrorAlert(true)
+                console.log("should be true ", errorAlert)
+                console.error("failed to fetch stash")
+            }
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     useEffect(() => {
         if (searchTerm) {
             search(searchTerm)
@@ -43,7 +63,8 @@ export default function Stash() {
             setItems([])
             setSelectedItem(null)
         }
-    }, [searchTerm])
+        fetchStash()
+    }, [userId, searchTerm])
     
     const handleSelectItem = (item) => {
         setSelectedItem(item)
@@ -63,7 +84,6 @@ export default function Stash() {
     const addToStash = async (item) => {
         try {
             const data = {
-                user_id: userId,
                 rav_id: item.rav_id,
                 name: item.name,
                 yarn_company: item.yarn_company,
@@ -72,15 +92,22 @@ export default function Stash() {
                 grams: item.grams,
                 machine_washable: item.machine_washable,
                 texture: item.texture,
-                photo: item.photo,
+                photo: {
+                    small_url: item.photo.small_url,
+                    medium_url: item.photo.medium_url
+                  },
                 permalink: item.permalink,
             }
-            const response = await addNewStash(data)
+            console.log("stash data ", data)
+            const response = await addNewStash(userId, data)
+            console.log("stash response ", response)
             if (response && response.status === 201) {
                 setStash([...stash, data])
-            } else {
+            } else if (response && response.status === 401) {
+                setErrorAlert(true)
+            }else {
                 console.error("yarn not added to stash")
-            }
+            }     
         } catch (error) {
             console.error(error)
         }
@@ -88,6 +115,7 @@ export default function Stash() {
 
     return (
         <main>
+            {errorAlert && <AlertInvalidToken />}
             <div className="section-border">
                 <div className="section-content">
                     <SearchText />
@@ -112,6 +140,7 @@ export default function Stash() {
                         <section className="w-full mx-auto flex flex-wrap justify-center">
                             {stash.map((item) => (
                                 <StashCard
+                                    key={item.rav_id}
                                     item={item}
                                 />
                             ))}

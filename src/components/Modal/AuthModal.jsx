@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import AuthTabs from '@components/Forms/AuthTabs'
 
-export default function AuthModal() {
+export default function AuthModal({ handleSuccess }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const openModal = () => {
@@ -29,7 +29,7 @@ export default function AuthModal() {
           <button className="btn-ghost btn-sm btn-circle btn absolute right-2 top-2" onClick={closeModal}>
             ✕
           </button>
-          <AuthTabs closeModal={closeModal} />
+          <AuthTabs closeModal={closeModal} handleSuccess={handleSuccess} />
         </div>
       </label>
     </div>

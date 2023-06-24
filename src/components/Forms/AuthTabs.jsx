@@ -1,7 +1,7 @@
 import { useState } from "react"
 import AuthForm from "@components/Forms/AuthForm";
 
-export default function AuthTabs({ closeModal }) {
+export default function AuthTabs({ closeModal, handleSuccess }) {
     const tabs = ["Login", "Signup"];
     const [activeTab, setActiveTab] = useState(0);
   
@@ -16,8 +16,8 @@ export default function AuthTabs({ closeModal }) {
             {tab}
           </button>
         ))}
-        <div className={`section-content ${activeTab !== 0 ? "hidden" : ""}`}><AuthForm formType="login" closeModal={closeModal} /></div>
-        <div className={`section-content ${activeTab !== 1 ? "hidden" : ""}`}><AuthForm formType="signup" closeModal={closeModal} /></div>
+        <div className={`section-content ${activeTab !== 0 ? "hidden" : ""}`}><AuthForm formType="login" closeModal={closeModal} handleSuccess={handleSuccess} /></div>
+        <div className={`section-content ${activeTab !== 1 ? "hidden" : ""}`}><AuthForm formType="signup" closeModal={closeModal} handleSuccess={handleSuccess} /></div>
       </div>
     );
 }

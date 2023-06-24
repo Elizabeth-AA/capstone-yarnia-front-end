@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { apiInstance } from '@services/axios'
 import { authUser, addUser } from '@utils/helpers'
 import { LogInFields, SignUpFields } from '@components/Input/FormFields'
@@ -7,8 +6,7 @@ import AuthInput from '@components/Input/AuthInput'
 import AuthBtn from '@components/Buttons/AuthBtn'
 import AuthHeader from '@components/Login/AuthHeader'
 
-export default function AuthForm({ formType, closeModal }) {
-  const navigate = useNavigate()
+export default function AuthForm({ formType, closeModal, handleSuccess }) {
 
   const formFields = formType === 'login' ? LogInFields : SignUpFields
 
@@ -32,22 +30,19 @@ export default function AuthForm({ formType, closeModal }) {
   const handleSubmit = async (e) => {
     if (formType === 'login') {
       const response = await authenticateUser()
-      if (response && response.status === 201) {
-        const { token, userId } = response.data
-        localStorage.setItem('token', token)
-
+      if (response) {
+        const userId = response.userId
         clearFields()
         closeModal()
-        navigate(`/users/${userId}`)
+        handleSuccess(userId)
       }
     } else if (formType === 'signup') {
       const response = await createUser()
-      if (response && response.status === 201) {
-        const { token, userId } = response.data
-        localStorage.setItem('token', token)
+      if (response) {
+        const userId = response.userId
         clearFields()
         closeModal()
-        navigate(`/users/${userId}`)
+        handleSuccess(userId)
       }
     }
   }
@@ -56,14 +51,15 @@ export default function AuthForm({ formType, closeModal }) {
     const email = fields.find((field) => field.name === 'email').value
     const password = fields.find((field) => field.name === 'password').value
     const data = { email, password }
-
+    
     try {
       const response = await authUser(data)
-      if (response && response.status === 201) {
-        const { token } = response.data
-        localStorage.setItem('token', token)
-        apiInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`
-        return response
+      if (response) {
+        const {accessToken, refreshToken, userId} = response
+        localStorage.setItem('accessToken', accessToken)
+        localStorage.setItem('refreshToken', refreshToken)
+        apiInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
+        return { accessToken, refreshToken, userId }
       }
     } catch (error) {
       console.log(error)
