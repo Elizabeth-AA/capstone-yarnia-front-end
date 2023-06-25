@@ -4,12 +4,12 @@ module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   
   theme: {
-    screens: {
-      'sm': '250px',
-      'md': '425px',
-      'lg': '768px',
-      'xl': '1366px',
-    },
+    // screens: {
+    //   'sm': '250px',
+    //   'md': '425px',
+    //   'lg': '768px',
+    //   'xl': '1366px',
+    // },
     
     extend: {
       fontFamily: {

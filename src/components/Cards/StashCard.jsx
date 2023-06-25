@@ -14,7 +14,7 @@ export default function StashCard({ item, deleteFromStash }) {
   }
 
   return (
-    <div tabIndex={0} className="card h-44 md:h-64 w-3/4" key={item.rav_id}>
+    <div tabIndex={0} className="card h-fit w-64 md:h-64 md:w-fit" key={item.rav_id}>
       <YarnCard item={item} />
       <div className="absolute bottom-0 right-0 btn-tip" data-tip="see projects">
         <button onClick={() => toProjects(item)}>
