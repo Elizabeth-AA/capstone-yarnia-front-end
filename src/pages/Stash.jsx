@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getRavelryYarn, addNewStash, getStash } from "@utils/helpers"
+import { getRavelryYarn, addNewStash, getStash, deleteStashItem } from "@utils/helpers"
 import Autocomplete from "@components/Search/Autocomplete"
 import SelectedItem from "@components/Modal/SelectedItem"
 import StashCardSection from "@components/Cards/StashCardSection"
@@ -109,6 +109,21 @@ export default function Stash() {
         }
     }
 
+    const deleteFromStash = async (yarnId) => {
+        try {
+          const response = await deleteStashItem(userId, yarnId);
+          if (response) {
+            setLoading(true);
+            await fetchStash();
+          } else {
+            setErrorAlert(true);
+            console.error("Failed to delete yarn from stash");
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
     return (
         <main>
             {errorAlert && <AlertInvalidToken />}
@@ -130,7 +145,7 @@ export default function Stash() {
                     />
                 </div>
             </div>
-            {!loading && <StashCardSection stash={stash} />}
+            {!loading && <StashCardSection stash={stash} deleteFromStash={deleteFromStash} />}
         </main>
     )
 }

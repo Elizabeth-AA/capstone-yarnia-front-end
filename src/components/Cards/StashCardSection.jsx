@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import StashCard from "@components/Cards/StashCard"
 
-export default function StashCardSection({ stash }) {
+export default function StashCardSection({ stash, deleteFromStash }) {
 
     const [stashItems, setStashItems] = useState([])
     const sortedStash = stash.sort((a, b) => b.yarn_id - a.yarn_id)
@@ -18,6 +18,7 @@ export default function StashCardSection({ stash }) {
                     <StashCard
                         key={item.rav_id}
                         item={item}
+                        deleteFromStash={deleteFromStash}
                     />
                 ))}
             </section>

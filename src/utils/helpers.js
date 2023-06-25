@@ -101,6 +101,24 @@ export async function getStash(userId) {
   }
 }
 
+export async function deleteStashItem(userId, yarnId) {
+  try {
+    const accessToken = localStorage.getItem('accessToken');
+    const response = await apiInstance.delete(`api/user/${userId}/${yarnId}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    if (response.status === 204) {
+      return true;
+    } else if (response.status === 401) {
+      return response.data.message;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export async function getRavelryProjects(permalink, patternCategories) {
   try {
     const promises = patternCategories.map(async (category) => {
