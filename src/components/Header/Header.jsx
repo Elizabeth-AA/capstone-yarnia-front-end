@@ -1,12 +1,28 @@
-import { useState } from "react"
-import NavItem from "@components/Header/NavItem"
-import NavLinks from '@components/Header/links.json'
+import { useEffect, useState } from "react"
+import { NavLink } from "react-router-dom"
 import logo from '@assets/icons/yarnia-icon.png'
 
 export default function Header() {
-    
-    const [activeLink, setActiveLink] = useState('/')
-    
+    const [hasAccessToken, setHasAccessToken] = useState(false)
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem('accessToken')
+        if (accessToken !== null) {
+            setHasAccessToken(true)
+        }
+      }, []);
+
+      const handleLogout = () => {
+        localStorage.removeItem('accessToken');
+        setHasAccessToken(false)
+        window.location.href = '/'
+      }
+
+      const getUserId = () => {
+        const userId = localStorage.getItem('userId')
+        return userId !== null ? userId : "";
+      }
+
     return (
         <header>
             <nav className='relative flex items-center justify-between flex-wrap flex-col md:flex-row bg-primary px-4 pt-1 z-10 pin-t'>
@@ -20,15 +36,17 @@ export default function Header() {
                     </a>
                 </div>
                 <div className='flex justify-center btn-text gap-4 md:gap-3 lg:gap-4 flex-row mt-2 md:mt-0 mb-1 md:mb-0'>
-                    {NavLinks.map((link, index) => (
-                        <NavItem
-                            key={index}
-                            to={link.path}
-                            name={link.name}
-                            active={activeLink}
-                            setActiveLink={setActiveLink}
-                        />
-                    ))}
+                    <NavLink className='nav-link' to={`/user/${getUserId()}`}>
+                        stash
+                    </NavLink>
+                    {hasAccessToken ?
+                    <NavLink className='nav-link' onClick={handleLogout}>
+                        logout
+                    </NavLink> :
+                    <NavLink className='nav-link' to='/'>
+                        login
+                    </NavLink>
+                    }
                 </div>
             </nav>
         </header>

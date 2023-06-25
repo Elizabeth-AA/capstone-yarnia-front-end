@@ -11,6 +11,7 @@ export async function addUser(data) {
 
       if (response.status === 201) {
         const { userId } = response.data
+        localStorage.setItem('userId', userId)
         return { ...response, userId }
       } else {
         throw new Error('signup failed')

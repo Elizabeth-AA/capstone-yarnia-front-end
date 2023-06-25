@@ -66,4 +66,8 @@
   .icon {
     @apply h-6 w-6 text-accent-content hover:text-accent md:h-7 md:w-7
   }
+
+  .nav-link {
+    @apply btn btn-xs btn-active bg-base-100 btn-text hover:bg-accent hover:text-neutral rounded w-16 lg:w-20 md:btn-sm lg:btn-md
+  }
 }
