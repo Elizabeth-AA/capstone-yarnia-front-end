@@ -17,7 +17,7 @@ export default function Landing() {
   }
 
   const handleSuccessClick = () => {
-    navigate(`/user/${userId}`)
+    window.location.href = `/user/${userId}`
     setShowAlert(false)
   }
 

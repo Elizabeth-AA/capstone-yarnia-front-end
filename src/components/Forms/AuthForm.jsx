@@ -58,6 +58,7 @@ export default function AuthForm({ formType, closeModal, handleSuccess }) {
         const {accessToken, refreshToken, userId} = response
         localStorage.setItem('accessToken', accessToken)
         localStorage.setItem('refreshToken', refreshToken)
+        localStorage.setItem('userId', userId)
         apiInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
         return { accessToken, refreshToken, userId }
       }

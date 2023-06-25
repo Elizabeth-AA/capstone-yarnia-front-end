@@ -21,7 +21,7 @@ export default function AuthInput({
               name={name}
               type={type}
               required={isRequired}
-              className="input input-secondary input-md w-full border-2 my-2 placeholder-base-content placeholder:font-normal text-base font-semibold text-neutral bg-accent"
+              className="input input-secondary input-md w-full border-2 my-2 placeholder-base-100 text-base font-normal text-base-content bg-accent"
               placeholder={placeholder}
             />
         </div>

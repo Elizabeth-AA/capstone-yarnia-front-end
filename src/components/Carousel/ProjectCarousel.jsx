@@ -30,7 +30,7 @@ console.log("carousel results ", searchResults)
                 </div>
               ))
             ) : (
-              <p className="text-error brightness-200 font-semibold text-lg md:text-lg">no projects for this category</p>
+              <p className="bg-error text-error-content  font-semibold text-lg md:text-lg">no projects for this category</p>
             )}
             </div>
           </div>
