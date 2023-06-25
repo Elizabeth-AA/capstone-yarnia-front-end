@@ -2,5 +2,6 @@
     "signup": "/api/auth/signup",
     "login": "/api/auth/login",
     "user": "/api/user/:userId",
+    "stash-item": "/api/user/:userId/:yarnId",
     "projects": "/api/yarn"
 }

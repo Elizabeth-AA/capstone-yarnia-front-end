@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getRavelryYarn, addNewStash, getStash } from "@utils/helpers"
+import { getRavelryYarn, addNewStash, getStash, deleteStashItem } from "@utils/helpers"
 import Autocomplete from "@components/Search/Autocomplete"
 import SelectedItem from "@components/Modal/SelectedItem"
-import StashCard from "@components/Cards/StashCard"
+import StashCardSection from "@components/Cards/StashCardSection"
 import SearchText from "@components/Text/SearchText"
 import AlertInvalidToken from "@components/Alert/AlertInvalidToken"
 
@@ -13,10 +13,9 @@ export default function Stash() {
     const [items, setItems] = useState([])
     const [selectedItem, setSelectedItem] = useState(null)
     const [stash, setStash] = useState([])
+    const [loading, setLoading] = useState(true)
     const [open, setOpen] = useState(false)
     const [errorAlert, setErrorAlert] = useState(false)
-
-console.log("should be false ", errorAlert)
 
     const search = async (searchTerm) => {
         try {
@@ -45,12 +44,11 @@ console.log("should be false ", errorAlert)
             const response = await getStash(userId)
             if (response) {
                 setStash(response)
-                console.log("fetch stash ", stash)
             } else {
                 setErrorAlert(true)
-                console.log("should be true ", errorAlert)
                 console.error("failed to fetch stash")
             }
+            setLoading(false)
         } catch (error) {
             console.error(error)
         }
@@ -98,11 +96,10 @@ console.log("should be false ", errorAlert)
                   },
                 permalink: item.permalink,
             }
-            console.log("stash data ", data)
             const response = await addNewStash(userId, data)
-            console.log("stash response ", response)
             if (response) {
-                setStash([...stash, data])
+                setLoading(true)
+                await fetchStash()
             } else {
                 setErrorAlert(true)
                 console.error("yarn not added to stash")
@@ -111,6 +108,21 @@ console.log("should be false ", errorAlert)
             console.error(error)
         }
     }
+
+    const deleteFromStash = async (yarnId) => {
+        try {
+          const response = await deleteStashItem(userId, yarnId);
+          if (response) {
+            setLoading(true);
+            await fetchStash();
+          } else {
+            setErrorAlert(true);
+            console.error("Failed to delete yarn from stash");
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
 
     return (
         <main>
@@ -133,20 +145,7 @@ console.log("should be false ", errorAlert)
                     />
                 </div>
             </div>
-            {stash && stash.length > 0 && (
-                <div className="section-border">
-                    <div className="section-content">
-                        <section className="w-full mx-auto flex flex-wrap justify-center">
-                            {stash.map((item) => (
-                                <StashCard
-                                    key={item.rav_id}
-                                    item={item}
-                                />
-                            ))}
-                        </section>
-                    </div>
-                </div>
-            )}
+            {!loading && <StashCardSection stash={stash} deleteFromStash={deleteFromStash} />}
         </main>
     )
 }

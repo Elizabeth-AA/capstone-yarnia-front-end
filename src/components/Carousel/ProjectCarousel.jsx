@@ -2,11 +2,11 @@ import { InformationCircleIcon } from '@heroicons/react/24/outline'
 
 export default function ProjectCarousel({ searchResults }) {
   const patternCategories = ['clothing', 'accessories', 'home', 'toys and hobbies']
-
+console.log("carousel results ", searchResults)
   return (
     <div className="mt-2">
       {patternCategories.map((category) => {
-        const categoryProjects = searchResults.filter((project) => project.category === category)
+        const categoryProjects = searchResults.filter((project) => project.category === category && project.photo !== null)
         return (
           <div key={category} className="section-content bg-neutral mb-4 last:mb-2 opacity-80 hover:opacity-100">
             <h3 className="card-header text-accent-content ml-3 pt-3 text-xl md:text-2xl lg:text-3xl capitalize pb-2">{category}</h3>

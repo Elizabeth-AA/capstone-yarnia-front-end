@@ -19,7 +19,7 @@ export default function YarnCard({ item }) {
       <img
         src={item.photo.small_url}
         alt="skein of yarn"
-        className="h-full w-44 rounded-t-lg object-cover md:w-48 md:rounded-l-lg md:rounded-tr-none"
+        className="h-full w-64 rounded-t-lg object-cover md:w-48 md:rounded-l-lg md:rounded-tr-none"
       />
       <div className="relative w-44 px-4 py-3 md:max-w-screen-md">
         <span tabIndex={0} className="card__subheader">
