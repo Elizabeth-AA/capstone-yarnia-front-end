@@ -38,9 +38,9 @@ export default function Projects() {
     }
   }
 
-//   useEffect(() => {
-//     projectSearch()
-//   }, [])
+  useEffect(() => {
+    projectSearch()
+  }, [])
 
   return (
     <main>
@@ -51,7 +51,9 @@ export default function Projects() {
             browse projects that use this yarn
           </h2>
         </div>
+        {searchResults.length > 0 && (
         <ProjectCarousel searchResults={searchResults} />
+        )}
       </div>
     </main>
   )

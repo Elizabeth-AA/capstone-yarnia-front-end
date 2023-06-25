@@ -73,16 +73,12 @@ export async function addNewStash(userId, data) {
 
 export async function getStash(userId) {
   try {
-    console.log("get stash id ", userId)
     const accessToken = localStorage.getItem('accessToken')
-    console.log("get stash token ", accessToken)
     const response = await apiInstance.get(`api/user/${userId}`, {
       headers: {
           Authorization: `Bearer ${accessToken}`,
       },
       })
-      console.log("get stash response ", response)
-      console.log("get stash response data ", response.data)
     if (response.status === 200) {
       const parsedData = response.data.map(item => {
         const parsedPhoto = item.photo ? JSON.parse(item.photo) : {};
@@ -91,7 +87,6 @@ export async function getStash(userId) {
           photo: parsedPhoto,
         };
       });
-      console.log("parsed ", parsedData)
       return parsedData;
     } else if (response.status === 401) {
       return response.data.message
@@ -131,5 +126,6 @@ export async function getRavelryProjects(permalink, patternCategories) {
     return results
   } catch (e) {
     console.log(e)
+    throw e
   }
 }
