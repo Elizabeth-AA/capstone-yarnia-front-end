@@ -8,11 +8,13 @@ export async function addUser(data) {
           'Content-Type': 'application/json',
         },
       })
-
       if (response.status === 201) {
-        const { userId } = response.data
+        console.log(response)
+        const { accessToken, refreshToken, userId } = response.data
         localStorage.setItem('userId', userId)
-        return { ...response, userId }
+        localStorage.setItem('accessToken', accessToken)
+        localStorage.setItem('refreshToken', refreshToken)
+        return { accessToken, refreshToken, userId }
       } else {
         throw new Error('signup failed')
       }
@@ -53,7 +55,6 @@ export async function getRavelryYarn(searchTerm) {
 }
 
 export async function addNewStash(userId, data) {
-  console.log("stash helper ", data)
   try {
     const accessToken = localStorage.getItem('accessToken')
     const response = await apiInstance.post(`api/user/${userId}`, data, {
@@ -61,11 +62,10 @@ export async function addNewStash(userId, data) {
           Authorization: `Bearer ${accessToken}`,
       },
       })
-      console.log("helper response ", response)
       if (response.status === 201) {
         return response
       } else if (response.status === 401) {
-        return response.data.message
+        return response.message
       }
   } catch (e) {
     console.error(e)
@@ -81,14 +81,7 @@ export async function getStash(userId) {
       },
       })
     if (response.status === 200) {
-      const parsedData = response.data.map(item => {
-        const parsedPhoto = item.photo ? JSON.parse(item.photo) : {};
-        return {
-          ...item,
-          photo: parsedPhoto,
-        };
-      });
-      return parsedData;
+      return response.data
     } else if (response.status === 401) {
       return response.data.message
     }
