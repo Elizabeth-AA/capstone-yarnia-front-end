@@ -61,8 +61,8 @@ export async function addNewStash(userId, data) {
       },
       })
       console.log("helper response ", response)
-      if (response.status === 200) {
-        return response.data
+      if (response.status === 201) {
+        return response
       } else if (response.status === 401) {
         return response.data.message
       }
