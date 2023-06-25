@@ -61,8 +61,8 @@ export async function addNewStash(userId, data) {
       },
       })
       console.log("helper response ", response)
-      if (response.status === 200) {
-        return response.data
+      if (response.status === 201) {
+        return response
       } else if (response.status === 401) {
         return response.data.message
       }
@@ -84,7 +84,15 @@ export async function getStash(userId) {
       console.log("get stash response ", response)
       console.log("get stash response data ", response.data)
     if (response.status === 200) {
-      return response.data
+      const parsedData = response.data.map(item => {
+        const parsedPhoto = item.photo ? JSON.parse(item.photo) : {};
+        return {
+          ...item,
+          photo: parsedPhoto,
+        };
+      });
+      console.log("parsed ", parsedData)
+      return parsedData;
     } else if (response.status === 401) {
       return response.data.message
     }
