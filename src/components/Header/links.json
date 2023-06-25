@@ -1,11 +1,7 @@
 [
     {
-      "path": "/users",
+      "path": "/user/:userId",
       "name": "stash"
-    },
-    {
-      "path": "/yarn",
-      "name": "projects"
     },
     {
       "path": "/",

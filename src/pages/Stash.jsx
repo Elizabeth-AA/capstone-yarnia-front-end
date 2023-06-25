@@ -101,13 +101,12 @@ console.log("should be false ", errorAlert)
             console.log("stash data ", data)
             const response = await addNewStash(userId, data)
             console.log("stash response ", response)
-            if (response && response.status === 201) {
+            if (response) {
                 setStash([...stash, data])
-            } else if (response && response.status === 401) {
+            } else {
                 setErrorAlert(true)
-            }else {
                 console.error("yarn not added to stash")
-            }     
+            }   
         } catch (error) {
             console.error(error)
         }
