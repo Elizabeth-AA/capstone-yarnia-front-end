@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Header from '@components/Header/Header'
-import User from '@pages/User'
+import Landing from '@pages/Landing'
+import Stash from '@pages/Stash'
 import Projects from '@pages/Projects'
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   return (
     <>
       <Header />
       <Routes>
-        <Route path='/' element={<User />} />
+        <Route path='/' element={<Landing />} />
+        <Route path='/user/:userId' element={<Stash />} />
         <Route path='/yarn/:rav_id' element={<Projects />} />
       </Routes>
     </>

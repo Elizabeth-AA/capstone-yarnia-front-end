@@ -1,12 +1,17 @@
+import HeroCard from "@components/Cards/HeroCard"
+
 const YarnHero = ({ item }) => {
+    const parsedPhoto = item.photo ? JSON.parse(item.photo) : {}
     return (
-        <div className="hero bg-base-200 flex flex-col md:flex-row py-4 justify-evenly">
-            <figure className="justify-start max-h-56 md:max-h-64"><img className="opacity-80 rounded" src={item.photo.small_url} alt="skein of yarn" /></figure>
-            <div className="hero-content max-h-56 md:max-h-64 bg-base-100 rounded text-neutral gap-2 flex flex-wrap md:flex-col">
-                <h1 className="card-title">{item.name}</h1>
-                <p>by {item.yarn_company}</p>
-                <p>{item.yarn_weight.name}</p>
-                <p>{item.yardage} yds</p>
+        <div
+            className="hero flex flex-col py-10 bg-cover"
+            style={{backgroundImage: `url(${parsedPhoto.medium_url})`}}
+        >
+            <div className="hero-overlay bg-opacity-70"></div>
+            <div className="hero-content max-h-64 md:max-h-72 lg:max-h-80 bg-accent-content bg-opacity-80 rounded-lg text-primary gap-2 flex flex-wrap flex-col shadow-xl">
+                <HeroCard
+                item={item}
+                />
             </div>
         </div>
     )
