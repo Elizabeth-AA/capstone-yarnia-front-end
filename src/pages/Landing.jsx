@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import LandingHero from "@components/Hero/LandingHero"
 import AuthModal from "@components/Modal/AuthModal"
 import AboutText from "@components/Text/AboutText"
@@ -9,12 +8,18 @@ export default function Landing() {
   const [showAlert, setShowAlert] = useState(false)
   const [userId, setUserId] = useState(null)
 
-  const navigate = useNavigate()
-
   const handleSuccess = (userId) => {
     setUserId(userId)
     setShowAlert(true)
   }
+
+  useEffect(() => {
+    const storedUserId = localStorage.getItem('userId')
+    if (storedUserId) {
+      setUserId(storedUserId)
+      setShowAlert(true)
+    }
+  }, [])
 
   const handleSuccessClick = () => {
     window.location.href = `/user/${userId}`

@@ -4,7 +4,6 @@ export default function SelectedItemBtns({ selectedItem, addToStash, handleClose
 
   return (
     <div className="join-horizontal md:join-vertical mt-1 mb-2 mx-auto md:inline-flex md:flex-col md:justify-center">
-        {/* md:absolute md:right-4 md:bottom-0.5 w-36 md:w-44 inline-flex items-baseline justify-between */}
         <div className="btn-tip" data-tip="close">
             <button onClick={() => { handleClose() }}><ScissorsIcon className="icon" /></button>
         </div>

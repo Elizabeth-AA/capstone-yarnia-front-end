@@ -2,7 +2,6 @@ import YarnCard from "@components/Cards/YarnCard"
 import SelectedItemBtns from "@components/Buttons/SelectedItemBtns"
 
 const SelectedItem = ({ selectedItem, addToStash, handleClose, handleClick }) => {
-    console.log("selected", selectedItem)
     return (
         <div className="mx-auto">
         {selectedItem && (

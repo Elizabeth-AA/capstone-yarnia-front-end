@@ -44,15 +44,15 @@
   }
 
   .card__details {
-    @apply font-sans text-base md:text-lg cursor-auto my-1 mx-4 even:text-secondary lowercase
+    @apply font-sans text-sm md:text-base cursor-auto my-1 mx-4 even:text-secondary lowercase
   }
 
   .subheader {
-    @apply font-sans text-lg md:text-2xl font-semibold
+    @apply font-sans text-xl md:text-2xl font-semibold
   }
 
   .body-text {
-    @apply font-sans text-sm md:text-lg pb-2
+    @apply font-sans text-base md:text-lg pb-2
   }
 
   .btn-text {
