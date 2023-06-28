@@ -15,7 +15,7 @@ export default function StashCard({ item, deleteFromStash }) {
   const renderListItem = (label, value) => {
     if (value) {
       let renderedValue = value
-      if (label === 'Machine Washable:' && value === true) {
+      if (label === 'Machine Washable:' && value !== null) {
         renderedValue = 'Machine Washable'
       }
       return (
