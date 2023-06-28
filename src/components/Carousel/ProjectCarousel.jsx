@@ -19,7 +19,7 @@ console.log("carousel results ", searchResults)
                   key={`${category}-${index}`}
                 >
                   <img className="hover:scale-105 rounded-box h-48 md:h-56 lg:h-64" src={project.photo.small_url} />
-                  <div className="btn-tip absolute right-0" data-tip="view on ravelry">
+                  <div className="btn-tip tooltip-left absolute right-0" data-tip="view on ravelry">
                   <a
                     href={`https://www.ravelry.com/projects/${project.user.username}/${project.permalink}`}
                     target="_blank"
