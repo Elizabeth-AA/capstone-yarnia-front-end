@@ -7,7 +7,6 @@ import StashCollapse from "@components/Collapse/StashCollapse"
 export default function User() {
     const [searchTerm, setSearchTerm] = useState("")
     const [items, setItems] = useState([])
-    // const [loading, setLoading] = useState(false)
     const [selectedItem, setSelectedItem] = useState(null)
     const [stash, setStash] = useState([])
     const [open, setOpen] = useState(false)
@@ -59,13 +58,12 @@ export default function User() {
         try {
             const data = {
                 user_id: 4,
-                // change user_id value to url param
                 rav_id: item.rav_id,
                 name: item.name,
                 yarn_company: item.yarn_company,
                 yarn_weight: item.yarn_weight,
                 yardage: item.yardage,
-                photo: item.photo || "placeholder",
+                photo: item.photo,
                 permalink: item.permalink,
             }
             const response = await addNewStash(data)
