@@ -34,7 +34,6 @@ export default function Stash() {
                 searchTerm: item.name,
             }))
             setItems(searchResults)
-            console.log(items)
         } catch (error) {
             console.error(error)
         }
@@ -43,7 +42,6 @@ export default function Stash() {
     const fetchStash = async () => {
         try {
             const response = await getStash(userId)
-            console.log(response)
             if (response) {
                 setStash(response)
             } else {
